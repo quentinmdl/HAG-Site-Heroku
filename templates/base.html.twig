@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>At Home A Game</title>
+        <base href="/">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Projet UF, At Home A Game, réalisé en B2 informatique avec le framework Symfony" />
+        <meta name="author" content="Etudiants">
+        <meta name="Keywords" content="etudiant, projet uf, On The Road A Game, Referencement web, Ynov , Developpeur web, Ynov, Aix en provence, Développeur WEB, Mobile, Android, IOS,  défis, voyage, Symfony, Material Design" />
+        <meta name="Robots" content="all">  
+        <meta property="og:title" content="Projet UF, At Home A Game, réalisé en B2 informatique avec le framework Symfony" />
+        <meta property="og:type" content="Projet UF B2, At Home A Game" />
+        {# <meta property="og:image" content="favicon.ico" />
+        <meta property="og:url" content="https://www.qmendel.fr" /> #}
+
+        {# Run `composer require symfony/webpack-encore-bundle`
+           and uncomment the following Encore helpers to start using Symfony UX #}
+        {% block stylesheets %}
+            {#{{ encore_entry_link_tags('app') }}#}
+        {% endblock %}
+
+        {% block javascripts %}
+            {#{{ encore_entry_script_tags('app') }}#}
+        {% endblock %}
+    </head>
+    <body>
+        <noscript>Javascript est désactivé ou bien n'est pas supporté par votre navigateur!</noscript>
+        {% include 'base/navbar.html.twig' %}
+        {% block body %}{% endblock %}
+        {% include 'base/footer.html.twig' %}
+    </body>
+</html>
