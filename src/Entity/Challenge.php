@@ -50,21 +50,31 @@ class Challenge
     private $progession;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Group::class, mappedBy="challenge")
-     */
-    private $groups;
-
-    /**
      * @ORM\ManyToOne(targetEntity=Session::class, inversedBy="challenges")
      * @ORM\JoinColumn(nullable=false)
      */
     private $session;
 
+    // /**
+    //  * @ORM\ManyToOne(targetEntity=Admin::class, inversedBy="challenge")
+    //  * @ORM\JoinColumn(nullable=false)
+    //  */
+    // private $admin;
+
     /**
-     * @ORM\ManyToOne(targetEntity=Admin::class, inversedBy="challenge")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToMany(targetEntity=Group::class, mappedBy="challenge")
      */
-    private $admin;
+    private $groups;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $createdAt;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $updatedAt;
 
     public function __construct()
     {
@@ -148,6 +158,30 @@ class Challenge
         return $this;
     }
 
+    public function getSession(): ?Session
+    {
+        return $this->session;
+    }
+
+    public function setSession(?Session $session): self
+    {
+        $this->session = $session;
+
+        return $this;
+    }
+
+    // public function getAdmin(): ?Admin
+    // {
+    //     return $this->admin;
+    // }
+
+    // public function setAdmin(?Admin $admin): self
+    // {
+    //     $this->admin = $admin;
+
+    //     return $this;
+    // }
+
     /**
      * @return Collection|Group[]
      */
@@ -175,26 +209,26 @@ class Challenge
         return $this;
     }
 
-    public function getSession(): ?Session
+    public function getCreatedAt(): ?\DateTimeInterface
     {
-        return $this->session;
+        return $this->createdAt;
     }
 
-    public function setSession(?Session $session): self
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $this->session = $session;
+        $this->createdAt = $createdAt;
 
         return $this;
     }
 
-    public function getAdmin(): ?Admin
+    public function getUpdatedAt(): ?\DateTimeInterface
     {
-        return $this->admin;
+        return $this->updatedAt;
     }
 
-    public function setAdmin(?Admin $admin): self
+    public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
     {
-        $this->admin = $admin;
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }

@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<p>My articles</p>
+
+    {% for article in articles %}
+        <article>
+            <h2>{{ article.title }}</h2>
+            <p> {{ article.description}} </p>
+            <p> {{ article.createdAt | date('d/m/Y') }} à {{ article.createdAt | date('h:m') }}
+            <a href="{{ path('article_show', {'id':article.id} ) }}">Lire l'article</a>
+        </article>
+    {% endfor %}
+
+{% endblock %}

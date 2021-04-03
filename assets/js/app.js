@@ -6,12 +6,14 @@
  */
 
 // any CSS you import will output into a single css file (app.css in this case)
-import './styles/app.css';
+import '.././styles/app.css';
 
 require("bootstrap/dist/css/bootstrap.css");
 import 'popper.js';
 import 'bootstrap';
 import 'font-awesome/css/font-awesome.css';
+
+import '../favicon.ico'
 
 
 // Need jQuery? Install it with "yarn add jquery", then uncomment to require it.

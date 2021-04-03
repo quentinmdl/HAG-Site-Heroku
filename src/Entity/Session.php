@@ -49,11 +49,21 @@ class Session
      */
     private $challenges;
 
+    // /**
+    //  * @ORM\ManyToOne(targetEntity=Admin::class, inversedBy="session")
+    //  * @ORM\JoinColumn(nullable=false)
+    //  */
+    // private $admin;
+
     /**
-     * @ORM\ManyToOne(targetEntity=Admin::class, inversedBy="session")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\Column(type="datetime")
      */
-    private $admin;
+    private $createdAt;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $updatedAt;
 
     public function __construct()
     {
@@ -174,14 +184,38 @@ class Session
         return $this;
     }
 
-    public function getAdmin(): ?Admin
+    // public function getAdmin(): ?Admin
+    // {
+    //     return $this->admin;
+    // }
+
+    // public function setAdmin(?Admin $admin): self
+    // {
+    //     $this->admin = $admin;
+
+    //     return $this;
+    // }
+
+    public function getCreatedAt(): ?\DateTimeInterface
     {
-        return $this->admin;
+        return $this->createdAt;
     }
 
-    public function setAdmin(?Admin $admin): self
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $this->admin = $admin;
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }

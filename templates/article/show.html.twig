@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <article>
+        <h2>{{ article.title }}</h2>
+        <p> {{ article.description}} </p>
+        <p> {{ article.image}} </p>
+        <p> {{ article.createdAt | date('d/m/Y') }} à {{ article.createdAt | date('h:m') }}
+    </article>
+{% endblock %}

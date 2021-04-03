@@ -47,6 +47,12 @@ class User implements UserInterface
     private $firstname;
 
     /**
+     * @ORM\Column(type="string", length=5)
+     */
+    private $gender;
+
+
+    /**
      * @ORM\Column(type="string", length=255)
      */
     private $address;
@@ -78,19 +84,19 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\Column(nullable=true)
      */
 
-    private $remember_token;
+    private $rememberToken;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @ORM\JoinColumn(nullable=true)
+     * @ORM\Column(nullable=true)
      */
     private $resetToken;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Group::class, inversedBy="users")
+     * @ORM\ManyToOne(targetEntity=Group::class, inversedBy="user")
      */
     private $groups;
 
@@ -98,6 +104,11 @@ class User implements UserInterface
      * @ORM\Column(type="boolean")
      */
     private $isVerified = false;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $createAt;
 
     public function getId(): ?int
     {
@@ -204,6 +215,18 @@ class User implements UserInterface
         return $this;
     }
 
+    public function getGender(): ?string
+    {
+        return $this->gender;
+    }
+
+    public function setGender(string $gender): self
+    {
+        $this->gender = $gender;
+
+        return $this;
+    }
+
     public function getAddress(): ?string
     {
         return $this->address;
@@ -278,12 +301,12 @@ class User implements UserInterface
 
     public function getRememberToken(): ?string
     {
-        return $this->remember_token;
+        return $this->rememberToken;
     }
 
-    public function setRememberToken(string $remember_token): self
+    public function setRememberToken(string $rememberToken): self
     {
-        $this->remember_token = $remember_token;
+        $this->rememberToken = $rememberToken;
 
         return $this;
     }
@@ -320,6 +343,19 @@ class User implements UserInterface
     public function setIsVerified(bool $isVerified): self
     {
         $this->isVerified = $isVerified;
+
+        return $this;
+    }
+
+
+    public function getCreateAt(): ?\DateTimeInterface
+    {
+        return $this->createAt;
+    }
+
+    public function setCreateAt(\DateTimeInterface $createAt): self
+    {
+        $this->createAt = $createAt;
 
         return $this;
     }

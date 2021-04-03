@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\GroupRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -32,6 +34,27 @@ class Group
      * @ORM\Column(type="integer")
      */
     private $score;
+
+    /**
+     * @ORM\ManyToMany(targetEntity=Challenge::class, inversedBy="groups")
+     */
+    private $challenge;
+
+    /**
+     * @ORM\Column(type="datetime")
+     */
+    private $createdAt;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $updatedAt;
+
+
+    public function __construct()
+    {
+        $this->challenge = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -70,6 +93,54 @@ class Group
     public function setScore(int $score): self
     {
         $this->score = $score;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|Challenge[]
+     */
+    public function getChallenge(): Collection
+    {
+        return $this->challenge;
+    }
+
+    public function addChallenge(Challenge $challenge): self
+    {
+        if (!$this->challenge->contains($challenge)) {
+            $this->challenge[] = $challenge;
+        }
+
+        return $this;
+    }
+
+    public function removeChallenge(Challenge $challenge): self
+    {
+        $this->challenge->removeElement($challenge);
+
+        return $this;
+    }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }

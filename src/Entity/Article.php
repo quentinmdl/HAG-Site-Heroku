@@ -5,6 +5,8 @@ namespace App\Entity;
 use App\Repository\ArticleRepository;
 use Doctrine\ORM\Mapping as ORM;
 
+use Symfony\Component\Validator\Constraints as Assert;
+
 /**
  * @ORM\Entity(repositoryClass=ArticleRepository::class)
  */
@@ -19,24 +21,39 @@ class Article
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Assert\Length(min=10, max=255, minMessage="Le titre doit comporter 10 caractères minimum")
      */
     private $title;
 
     /**
-     * @ORM\Column(type="blob", nullable=true)
+     * @ORM\Column(type="string", nullable=true)
+     * @Assert\Url( 
+     *      message = "Une url d'une image est attendu",
+     * )
      */
     private $image;
 
     /**
      * @ORM\Column(type="text")
+     * @Assert\Length(min=20, max=255, minMessage="La description doit comporter 10 caractères minimum")
      */
     private $description;
 
+    // /**
+    //  * @ORM\ManyToOne(targetEntity=Admin::class, inversedBy="article")
+    //  * @ORM\JoinColumn(nullable=false)
+    //  */
+    // private $admin;
+
     /**
-     * @ORM\ManyToOne(targetEntity=Admin::class, inversedBy="article")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\Column(type="datetime")
      */
-    private $admin;
+    private $createdAt;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $updatedAt;
 
     public function getId(): ?int
     {
@@ -79,14 +96,38 @@ class Article
         return $this;
     }
 
-    public function getAdmin(): ?Admin
+    // public function getAdmin(): ?Admin
+    // {
+    //     return $this->admin;
+    // }
+
+    // public function setAdmin(?Admin $admin): self
+    // {
+    //     $this->admin = $admin;
+
+    //     return $this;
+    // }
+
+    public function getCreatedAt(): ?\DateTimeInterface
     {
-        return $this->admin;
+        return $this->createdAt;
     }
 
-    public function setAdmin(?Admin $admin): self
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $this->admin = $admin;
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
 
         return $this;
     }
