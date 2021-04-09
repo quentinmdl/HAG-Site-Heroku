@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>At Home A Game</title>
+        <base href="/">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="description" content="Projet UF, At Home A Game, réalisé en B2 informatique avec le framework Symfony" />
+        <meta name="author" content="Etudiants">
+        <meta name="Keywords" content="etudiant, projet uf, On The Road A Game, Referencement web, Ynov , Developpeur web, Ynov, Aix en provence, Développeur WEB, Mobile, Android, IOS,  défis, voyage, Symfony, Material Design" />
+        <meta name="Robots" content="all">  
+        <link rel="icon" href="{{ asset('build/images/favicon.ico') }}" />
+    
+        {% block stylesheets %}
+            {{ encore_entry_link_tags('app') }}
+        {% endblock %}
+
+    </head>
+    <body>
+        <noscript>Javascript est désactivé ou bien n'est pas supporté par votre navigateur!</noscript>
+        
+        {% include 'base/navbar.html.twig' %}
+        <div class="container-fluid h-100">
+            <div class="row h-100">
+                <aside class="col-12 col-md-1 p-0 bg-dark">
+                    <nav class="navbar navbar-expand navbar-dark bg-dark flex-md-column flex-row align-items-start">
+                        <div class="collapse navbar-collapse">
+                            <ul class="flex-md-column flex-row navbar-nav w-100 justify-content-between">
+                                <li class="nav-item">
+                                    <a class="nav-link pl-0" href="{{ path('app_user_profile')}}">Mon profil</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link pl-0" href="{{ path('app_user_group')}}">Mon groupe</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link pl-0" href="{{ path('app_user_session')}}">Ma session</a>
+                                </li>       
+                            </ul>
+                        </div>
+                    </nav>
+                </aside>
+                <main class="col">
+                    {% block body %} {% endblock %}
+                </main>
+            </div>
+        </div>
+        {# <div class="nav nav-pills nav-fill">
+            <a class="nav-item nav-link" href="{{ path('app_user_profile')}}" role="tab"  aria-selected="true">Mon profil</a>
+            <a class="nav-item nav-link" href="{{ path('app_user_group')}}" role="tab"  aria-selected="true">Mon groupe</a>
+            <a class="nav-item nav-link" href="{{ path('app_user_session')}}" role="tab"  aria-selected="true">Ma session</a>
+        </div> #}
+    
+        {% include 'base/footer.html.twig' %}
+
+        {% block javascripts %}
+            {{ encore_entry_script_tags('app') }}
+        {% endblock %}
+
+    </body>
+</html>

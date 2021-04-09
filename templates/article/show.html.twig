@@ -1,10 +1,41 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
     <article>
         <h2>{{ article.title }}</h2>
         <p> {{ article.description}} </p>
-        <p> {{ article.image}} </p>
-        <p> {{ article.createdAt | date('d/m/Y') }} à {{ article.createdAt | date('h:m') }}
+        <img src="{{ article.image }}" alt="">
+        <p> Ecrit le {{ article.createdAt | date('d/m/Y') }} à {{ article.createdAt | date('h:m') }} dans la catégorie {{ article.category.title }}
     </article>
+
+    <section id="commentaires">
+    <h1> {{ article.comments | length}} Commentaires :</h1>
+    {% for comment in article.comments %}
+        <div class="comment">
+            <div class="row">
+                <div class="col-3">
+                    {{ comment.author}} (<small>{{ comment.createdAt | date('d/m/Y à H:i')}}</small>)
+                </div>
+                <div class="col">
+                    {{ comment.content | raw }}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+
+    {% if app.user %}
+        {{ form_start(commentForm) }}
+            {{ form_row(commentForm.content, { 'label' : 'Commentaire:', 'attr': { placeholder: "Votre commentaire" }}) }}
+            <button type="submit" class="btn btn-success">Commenter</button>
+        {{ form_end(commentForm) }}
+    {% else %}
+        <p>Veuillez vous connecter afin de commenter cette article</p>
+        <a href="{{ path('app_login') }}" class="btn btn-primary">Connexion</a> 
+    {% endif %}
+    </section>
 {% endblock %}

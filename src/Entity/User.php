@@ -2,14 +2,17 @@
 
 namespace App\Entity;
 
-use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use App\Repository\UserRepository;
+
+use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
- * @UniqueEntity(fields={"email"}, message="There is already an account with this email")
+ * @UniqueEntity(fields={"email"}, message="Il existe déjà un compte avec cette adresse E-mail !")
+ * @UniqueEntity(fields={"username"}, message="Ce pseudonyme est déjà utilisé !")
  */
 class User implements UserInterface
 {
@@ -22,8 +25,15 @@ class User implements UserInterface
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
+     * @Assert\Email(message = "L'addresse email n'est pas valide")
      */
     private $email;
+
+    /**
+     * @ORM\Column(type="string", length=255, unique=true)
+     * @Assert\Length(min="3", minMessage="Votre PSEUDO doit faire minimum 3 caractères")
+     */
+    private $username;
 
     /**
      * @ORM\Column(type="json")
@@ -33,9 +43,11 @@ class User implements UserInterface
     /**
      * @var string The hashed password
      * @ORM\Column(type="string")
+     * @Assert\Length(min="7", minMessage="Votre mot de passe doit faire minimum 7 caractères")
      */
     private $password;
 
+    
     /**
      * @ORM\Column(type="string", length=30)
      */
@@ -83,15 +95,13 @@ class User implements UserInterface
     private $dateofbirth;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * @ORM\Column(nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
 
     private $rememberToken;
 
     /**
-     * @ORM\Column(type="string", length=255)
-     * @ORM\Column(nullable=true)
+     * @ORM\Column(type="string", length=255,nullable=true)
      */
     private $resetToken;
 
@@ -108,7 +118,15 @@ class User implements UserInterface
     /**
      * @ORM\Column(type="datetime")
      */
-    private $createAt;
+    private $createdAt;
+
+     /**
+     * @ORM\Column(type="datetime", nullable=true))
+     */
+    private $updatedAt;
+
+
+
 
     public function getId(): ?int
     {
@@ -134,7 +152,7 @@ class User implements UserInterface
      */
     public function getUsername(): string
     {
-        return (string) $this->email;
+        return (string) $this->username;
     }
 
     /**
@@ -188,7 +206,7 @@ class User implements UserInterface
     public function eraseCredentials()
     {
         // If you store any temporary, sensitive data on the user, clear it here
-        // $this->plainPassword = null;
+        // $this->password = null;
     }
 
     public function getLastname(): ?string
@@ -347,15 +365,35 @@ class User implements UserInterface
         return $this;
     }
 
-
-    public function getCreateAt(): ?\DateTimeInterface
+    public function getCreatedAt(): ?\DateTimeInterface
     {
-        return $this->createAt;
+        return $this->createdAt;
     }
 
-    public function setCreateAt(\DateTimeInterface $createAt): self
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
     {
-        $this->createAt = $createAt;
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+
+    public function setUsername(string $username): self
+    {
+        $this->username = $username;
 
         return $this;
     }

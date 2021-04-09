@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#">Navbar</a>
+  <a class="navbar-brand" href="{{ path('main') }}">Navbar</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -15,9 +15,19 @@
       <li class="nav-item">
         <a class="nav-link"  href="{{ path('play') }}">Jouer</a>
       </li>
-      <li class="nav-item">
-        <a class="nav-link" href="{{ path('app_login') }}">Connexion/Inscription</a>
-      </li>
+      {% if not app.user %}
+        <li class="nav-item">
+          <a class="nav-link" href="{{ path('app_login') }}">Connexion/Inscription</a>
+        </li>
+      {% else %} 
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Hey {{ app.user.username() }} </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="{{ path('app_user_profile')}}">Gestion du compte</a>
+            <a class="dropdown-item" href="{{ path('app_logout') }}">Déconnexion</a>
+          </div>
+        </li> 
+      {% endif %}
     </ul>
   </div>
 </nav>

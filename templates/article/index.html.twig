@@ -7,7 +7,8 @@
         <article>
             <h2>{{ article.title }}</h2>
             <p> {{ article.description}} </p>
-            <p> {{ article.createdAt | date('d/m/Y') }} à {{ article.createdAt | date('h:m') }}
+            <img src="{{ article.image }}" alt="">
+            <p> Publiée le {{ article.createdAt | date('d/m/Y') }} à {{ article.createdAt | date('h:m') }} dans la catégorie : {{ article.category.title }}</p>
             <a href="{{ path('article_show', {'id':article.id} ) }}">Lire l'article</a>
         </article>
     {% endfor %}

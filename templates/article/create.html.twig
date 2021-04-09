@@ -1,11 +1,14 @@
 {% extends 'base.html.twig' %}
 
- {% form_theme formArticle 'bootstrap_4_layout.html.twig' %}
-
 {% block body %}
-    <p>Create article</p>
-   {{ form_start(formArticle) }}
-
+    <h1>Créer un article</h1>
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success">
+            {{ message }}
+        </div>
+    {% endfor %}
+    {{ form_start(formArticle) }}
+        {{ form_row(formArticle.category, {'attr' : {'placeholder' : "Choississez une catégorie" }}) }}
         {{ form_row(formArticle.title, {'attr' : {'placeholder' : "Titre de l'article" }}) }}
         {{ form_row(formArticle.description, {'attr' : {'placeholder' : "Description de l'article" }}) }}
         {{ form_row(formArticle.image, {'attr' : {'placeholder' : "Image de l'article" }}) }}
@@ -17,6 +20,15 @@
                 Ajoutez l'article
             {% endif %}
         </button>
-
     {{ form_end(formArticle) }}
+    <h1>Ajouter une catégorie</h1>
+     <div class="row">
+        <div class="col">
+            {{ form_start(formCategory) }}
+                {{ form_row(formCategory.title) }}
+                {{ form_row(formCategory.description) }}
+                <button type="submit" class="btn btn-primary">Ajouter</button>
+            {{ form_end(formCategory) }}
+        </div>
+    </div>
 {% endblock %}
