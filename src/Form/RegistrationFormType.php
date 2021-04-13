@@ -69,9 +69,6 @@ class RegistrationFormType extends AbstractType
                 'invalid_message' => "Votre mot de passe n'est pas identique",
                 'required' => true,
             ]);
-            // ->add('password', PasswordType::class, [
-            // ])
-            // ->add('confirmPassword', PasswordType::class);
     }
 
     public function configureOptions(OptionsResolver $resolver)

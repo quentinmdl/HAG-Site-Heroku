@@ -14,6 +14,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @UniqueEntity(fields={"email"}, message="Il existe déjà un compte avec cette adresse E-mail !")
  * @UniqueEntity(fields={"username"}, message="Ce pseudonyme est déjà utilisé !")
  */
+ 
 class User implements UserInterface
 {
     /**
@@ -101,7 +102,7 @@ class User implements UserInterface
     private $rememberToken;
 
     /**
-     * @ORM\Column(type="string", length=255,nullable=true)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $resetToken;
 

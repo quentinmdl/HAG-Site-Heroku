@@ -1,16 +1,37 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-<p>My articles</p>
+<container class="articles">
+    <div class="justify-content-md-center" style="padding: 70px 0;">
+        <div class="col-xs-12 col-md-9 mx-auto">
+            <div class="text-center">
+                <h2>Création d'un article</h2>
+            </div>
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
+            <div>
+                <p>Il y a {{ articles.getTotalItemCount }} articles à ce jour</p>
+            </div>
+                
+            <section>
+                {% for article in articles %}
+                    <article>
+                        <h2>{{ article.title }}</h2>
+                        <img src="{{ article.image }}"  width="250" height="250" alt="img artice">
+                        <p> Publiée le {{ article.createdAt | date('d/m/Y') }} à {{ article.createdAt | date('h:m') }} dans la catégorie : {{ article.category.title }}</p>
+                        <a href="{{ path('article_show', {'id':article.id} ) }}">Lire l'article</a>
+                    </article>
+                {% endfor %}
+            </section>
 
-    {% for article in articles %}
-        <article>
-            <h2>{{ article.title }}</h2>
-            <p> {{ article.description}} </p>
-            <img src="{{ article.image }}" alt="">
-            <p> Publiée le {{ article.createdAt | date('d/m/Y') }} à {{ article.createdAt | date('h:m') }} dans la catégorie : {{ article.category.title }}</p>
-            <a href="{{ path('article_show', {'id':article.id} ) }}">Lire l'article</a>
-        </article>
-    {% endfor %}
+            <div class="">
+                {{ knp_pagination_render(articles) }}
+            </div>
+        </div>
+    </div>
+</div>
 
 {% endblock %}

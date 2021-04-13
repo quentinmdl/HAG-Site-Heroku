@@ -2,10 +2,10 @@
 
 namespace App\Entity;
 
-use App\Repository\ArticleRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\ArticleRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -28,7 +28,7 @@ class Article
     private $title;
 
     /**
-     * @ORM\Column(type="string", nullable=true)
+     * @ORM\Column(type="string", nullable=false)
      * @Assert\Url( 
      * message = "Une url d'une image est attendu" 
      * )
@@ -37,7 +37,7 @@ class Article
 
     /**
      * @ORM\Column(type="text")
-     * @Assert\Length(min=20, max=255, minMessage="La description doit comporter 10 caractères minimum")
+     * @Assert\Length(min=20, minMessage="La description doit comporter 10 caractères minimum")
      */
     private $description;
 
