@@ -54,6 +54,7 @@ class Group
     public function __construct()
     {
         $this->challenge = new ArrayCollection();
+        $this->setCreatedAt(new \DateTime('Europe/Monaco'));
     }
 
     public function getId(): ?int
@@ -75,8 +76,9 @@ class Group
 
     public function getState(): ?array
     {
-        return $this->state;
+        $state = $this->state;
     }
+    
 
     public function setState(array $state): self
     {
@@ -84,6 +86,8 @@ class Group
 
         return $this;
     }
+
+    
 
     public function getScore(): ?int
     {
@@ -143,5 +147,10 @@ class Group
         $this->updatedAt = $updatedAt;
 
         return $this;
+    }
+
+    public function __toString() 
+    {
+        return $this->name;
     }
 }

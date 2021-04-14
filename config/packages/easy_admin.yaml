@@ -1,0 +1,20 @@
+# config/packages/easy_admin.yaml
+# easy_admin:
+#     design:
+#       form_theme: # Both themes are needed for ckeditor integration
+#         - "@EasyAdmin/form/bootstrap_4.html.twig"
+#         - "@FOSCKEditor/Form/ckeditor_widget.html.twig"
+#     entities:
+#         Comment:
+#             list:
+#                 actions: ['-new']
+#         Article:
+#             class: App\Entity\Article
+#             form:
+#               fields:
+#                   - { property: 'description', type: 'fos_ckeditor' }
+#         Category:
+#             label: menu.category
+#             class: App\Entity\Category
+
+

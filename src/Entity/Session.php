@@ -2,10 +2,13 @@
 
 namespace App\Entity;
 
-use App\Repository\SessionRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\SessionRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=SessionRepository::class)
@@ -23,6 +26,12 @@ class Session
      * @ORM\Column(type="string", length=30)
      */
     private $name;
+
+    /**
+     * @ORM\Column(type="text")
+     * @Assert\Length(min="30", minMessage="La description doit comporter au minimum 30 caractères")
+     */
+    private $description;
 
     /**
      * @ORM\Column(type="date")
@@ -69,6 +78,7 @@ class Session
     {
         $this->groups = new ArrayCollection();
         $this->challenges = new ArrayCollection();
+        $this->setCreatedAt(new \DateTime('Europe/Monaco'));
     }
 
     public function getId(): ?int
@@ -87,6 +97,20 @@ class Session
 
         return $this;
     }
+
+
+    public function getDescription(): ?string
+    {
+        return $this->description;
+    }
+
+    public function setDescription(string $description): self
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
 
     public function getStartdate(): ?\DateTimeInterface
     {

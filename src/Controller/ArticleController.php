@@ -112,8 +112,8 @@ class ArticleController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
         
             $comment->setAuthor($user->getUsername());
-            $comment->setCreatedAt(new \Datetime())
-                        ->setArticle($article);
+            $comment->setCreatedAt(new \DateTime('Europe/Monaco'))
+                    ->setArticle($article);
                         
             $manager->persist($comment);
             $manager->flush();
@@ -150,37 +150,4 @@ class ArticleController extends AbstractController
         ]);
 
     }
-
-
-    // public function deleteCategory (string $title, Category $category = null, Request $request, ObjectManager $manager): Response
-    // {
-       
-
-    //     $formDeleteCategory =  $this->createForm(RemoveCategoryType::class, $category);
-    //     $formDeleteCategory->handleRequest($request);
-
-    //     $category = $this->getDoctrine()->getRepository(Category::class)->find($title);
-
-    //     if ($formDeleteCategory->isSubmitted() && $formDeleteCategory->isValid()) {
-    //         $manager = $this->getDoctrine()->getManager();
-    //         $manager->remove($category);
-    //         $manager->flush();
-    
-    //         $this->addFlash(
-    //             'success',
-    //             'Catégorie créée avec succès !'
-    //         );
-
-    //         // return $this->redirectToRoute('article_create');
-    
-    //         return $this->render('article/create.html.twig', [
-     
-    //         ]);
-    //     }
-
-    //     return $this->render('article/create.html.twig', [
-    //         'formDeleteCategory' => $formDeleteCategory->createView(),
-    //     ]);
-    // }
-
 }

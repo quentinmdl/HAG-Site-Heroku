@@ -5,8 +5,8 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\ArticleRepository;
 use Doctrine\Common\Collections\Collection;
-use Doctrine\Common\Collections\ArrayCollection;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -71,6 +71,8 @@ class Article
     public function __construct()
     {
         $this->comments = new ArrayCollection();
+        $this->setCreatedAt(new \DateTime('Europe/Monaco'));
+
     }
 
     public function getId(): ?int
@@ -191,4 +193,11 @@ class Article
 
         return $this;
     }
+
+
+    public function __toString() 
+    {
+        return $this->title;
+    }
+
 }

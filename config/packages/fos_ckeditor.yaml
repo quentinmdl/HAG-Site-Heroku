@@ -3,8 +3,12 @@
 twig:
     form_themes:
         - '@FOSCKEditor/Form/ckeditor_widget.html.twig'
+
 fos_ck_editor:
+    input_sync: true
+    default_config: main_config
     configs:
         main_config:
+            toolbar: full 
             filebrowserBrowseRoute: elfinder
             filebrowserBrowseRouteParameters: []

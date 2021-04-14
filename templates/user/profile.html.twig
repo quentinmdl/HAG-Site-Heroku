@@ -9,10 +9,10 @@
                 {{ message }}
             </div>
         {% endfor %}
-        <div class="col-2">
+        <div class="col-md-3 col-xs-12">
             <div class="card text-center h-100">
                 <div class="card-body">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/1200px-Circle-icons-profile.svg.png" width="100" heigth="100" alt="image de profil">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/1200px-Circle-icons-profile.svg.png" width="100" heigth="auto" alt="image de profil">
                     <h5 class="card-title">Bonjour {{ app.user.firstname }} {{ app.user.lastname }}</h5>
                     <p class="card-text">Bienvenue sur votre profil</p>
                 </div>
@@ -21,7 +21,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-7">
+        <div class="col-md-6 col-xs-122">
             <div class="card mx-auto">
                 <div class="card-body">
                     <h5 class="card-title">Vos Informations</h5>

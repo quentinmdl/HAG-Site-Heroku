@@ -21,6 +21,7 @@ class RegistrationController extends AbstractController
 
     public function __construct()
     {
+        
     }
 
 
@@ -40,6 +41,7 @@ class RegistrationController extends AbstractController
                 )
                 );
 
+            $user->setRoles(array("ROLE_USER")); 
             $user->setCreatedAt(new \DateTime());
 
            

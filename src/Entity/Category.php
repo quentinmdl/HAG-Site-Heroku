@@ -40,9 +40,21 @@ class Category
      */
     private $articles;
 
+     /**
+     * @ORM\Column(type="datetime")
+     */
+    private $createdAt;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $updatedAt;
+
+
     public function __construct()
     {
         $this->articles = new ArrayCollection();
+        $this->setCreatedAt(new \DateTime('Europe/Monaco'));
     }
 
     public function getId(): ?int
@@ -103,4 +115,36 @@ class Category
 
         return $this;
     }
+
+    public function getCreatedAt(): ?\DateTimeInterface
+    {
+        return $this->createdAt;
+    }
+
+    public function setCreatedAt(\DateTimeInterface $createdAt): self
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    public function getUpdatedAt(): ?\DateTimeInterface
+    {
+        return $this->updatedAt;
+    }
+
+    public function setUpdatedAt(?\DateTimeInterface $updatedAt): self
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+
+    public function __toString() 
+    {
+        return $this->title;
+    }
+
 }
+

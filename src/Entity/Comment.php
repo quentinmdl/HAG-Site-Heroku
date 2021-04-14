@@ -41,6 +41,13 @@ class Comment
      */
     private $article;
 
+
+    public function __construct()
+    {
+        $this->setCreatedAt(new \DateTime('Europe/Monaco'));
+    }
+
+
     public function getId(): ?int
     {
         return $this->id;
@@ -93,4 +100,5 @@ class Comment
 
         return $this;
     }
+
 }
