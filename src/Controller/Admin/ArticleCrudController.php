@@ -5,10 +5,13 @@ namespace App\Controller\Admin;
 use App\Entity\Article;
 use FOS\CKEditorBundle\Form\Type\CKEditorType;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
 use EasyCorp\Bundle\EasyAdminBundle\Field\UrlField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
@@ -30,7 +33,9 @@ class ArticleCrudController extends AbstractCrudController
             TextField::new('title')->setLabel('Titre'),
             TextEditorField::new('description')->setLabel('Contenu'),
             AssociationField::new('category')->setLabel('Catégorie(s)'),
-            UrlField::new('image')->setLabel('Image/Vidéo'),
+            TextField::new('imageFile')->setFormType(VichImageType::class)->onlyWhenCreating()->setLabel('Image/Vidéo'),
+            ImageField::new('file')->setBasePath('/uploads/articles/')->onlyOnIndex(),
+            SlugField::new('slug')->setTargetFieldName('title')->setLabel('Titre pour URL')->hideOnIndex(),
             DateTimeField::new('createdAt')->hideOnForm()->setLabel('Créé à'),
         ];
     }

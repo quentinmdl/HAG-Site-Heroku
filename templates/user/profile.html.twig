@@ -12,7 +12,7 @@
         <div class="col-md-3 col-xs-12">
             <div class="card text-center h-100">
                 <div class="card-body">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/1200px-Circle-icons-profile.svg.png" width="100" heigth="auto" alt="image de profil">
+                    <img src=""  width="100" heigth="auto" alt="image de profil">
                     <h5 class="card-title">Bonjour {{ app.user.firstname }} {{ app.user.lastname }}</h5>
                     <p class="card-text">Bienvenue sur votre profil</p>
                     <div style="margin-top : 10%">
@@ -28,6 +28,14 @@
                             {% endif %}
                         {% endfor %}
                     </div> 
+                    {# {{ form_start(formEditProfileImage) }}
+                        <div>
+                            {{ form_widget(formEditProfileImage.profileImage, { 'label' : 'Image de profil' }) }}
+                        </div>
+                         <div>
+                           <button type="submit" class="btn btn-success">Modifier</button>
+                        </div>
+                    {{ form_end(formEditProfileImage)}} #}
                 </div>
                 <div class="card-footer">
                     <p class="card-text">Inscrit depuis le {{ app.user.createdAt | date('d/m/Y')}} à {{ app.user.createdAt | date('h:m')}}</p>

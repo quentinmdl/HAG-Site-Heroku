@@ -8,6 +8,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
+use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
@@ -36,6 +37,7 @@ class GroupCrudController extends AbstractCrudController
                         ])
                 ->allowMultipleChoices(true),
             IntegerField::new('score')->hideOnForm()->setLabel('Score'),
+            SlugField::new('slug')->setTargetFieldName('name')->hideOnForm()->hideOnIndex(),
             DateTimeField::new('createdAt')->hideOnForm()->setLabel('Créé à'),
         ];
     }
@@ -52,5 +54,11 @@ class GroupCrudController extends AbstractCrudController
     {
         return $filters
             ->add('name');
+    }
+
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            ->SetDefaultSort(['createdAt' => 'Desc']);
     }
 }

@@ -3,10 +3,14 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Session;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
@@ -34,8 +38,17 @@ class SessionCrudController extends AbstractCrudController
                         ])
                 ->allowMultipleChoices(true),
             TextEditorField::new('description')->setLabel('Description'),
+            TextField::new('imageFile')->setFormType(VichImageType::class)->onlyWhenCreating()->setLabel('Image/Vidéo'),
+            ImageField::new('file')->setBasePath('/uploads/sessions/')->onlyOnIndex(),
             DateTimeField::new('startDate')->setFormat('dd-MM-YY HH:mm')->renderAsChoice()->setLabel('Date de début'),
             DateTimeField::new('endDate')->setFormat('dd-MM-YY HH:mm')->renderAsChoice()->setLabel('Date de fin'),
+            SlugField::new('slug')->setTargetFieldName('name')->hideOnForm()->hideOnIndex(),
         ];
+    }
+
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            ->SetDefaultSort(['createdAt' => 'Desc']);
     }
 }

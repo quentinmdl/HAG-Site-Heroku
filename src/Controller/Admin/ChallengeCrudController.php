@@ -3,9 +3,13 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Challenge;
+use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
+use Vich\UploaderBundle\Form\Type\VichImageType;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\UrlField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
@@ -27,11 +31,19 @@ class ChallengeCrudController extends AbstractCrudController
             AssociationField::new('session')->setLabel('Session'),
             TextField::new('name')->setLabel('Nom'),
             TextEditorField::new('description')->setLabel('Description'),
-            //UrlField::new('image')->setLabel('Image'),
             TextField::new('location')->setLabel('Lieux'),
             IntegerField::new('point')->setLabel('Point(s)'),
+            TextField::new('imageFile')->setFormType(VichImageType::class)->onlyWhenCreating()->setLabel('Image/Vidéo'),
+            ImageField::new('file')->setBasePath('/uploads/challenges/')->onlyOnIndex(),
             // IntegerField::new('progession')->hideOnForm()->setLabel('Progression'),
+            SlugField::new('slug')->setTargetFieldName('name')->hideOnForm()->hideOnIndex(),
             DateTimeField::new('createdAt')->hideOnForm()->setLabel('Créé à')
         ];
+    }
+
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            ->SetDefaultSort(['createdAt' => 'Desc']);
     }
 }

@@ -8,6 +8,8 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
+use Gedmo\Mapping\Annotation as Gedmo;
+
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
@@ -30,6 +32,12 @@ class Category
     private $title;
 
     /**
+     * @Gedmo\Slug(fields={"title"})
+     * @ORM\Column(type="string", length=255, unique=true)
+     */
+    private $slug;
+
+    /**
      * @ORM\Column(type="text", nullable=true)
      * @Assert\Length(min="20", minMessage="La description doit comporter au minimum 20 caractères")
      */
@@ -40,9 +48,9 @@ class Category
      */
     private $articles;
 
-     /**
-     * @ORM\Column(type="datetime")
-     */
+    /**
+    * @ORM\Column(type="datetime")
+    */
     private $createdAt;
 
     /**
@@ -70,6 +78,18 @@ class Category
     public function setTitle(string $title): self
     {
         $this->title = $title;
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
 
         return $this;
     }
@@ -141,10 +161,8 @@ class Category
     }
 
 
-    public function __toString() 
+    public function __toString()
     {
         return $this->title;
     }
-
 }
-

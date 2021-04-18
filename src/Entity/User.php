@@ -9,10 +9,14 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+use Symfony\Component\HttpFoundation\File\File;
+
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
  * @UniqueEntity(fields={"email"}, message="Il existe déjà un compte avec cette adresse E-mail !")
  * @UniqueEntity(fields={"username"}, message="Ce pseudonyme est déjà utilisé !")
+ * @Vich\Uploadable
  */
  
 class User implements UserInterface
@@ -35,6 +39,21 @@ class User implements UserInterface
      * @Assert\Length(min="3", minMessage="Votre PSEUDO doit faire minimum 3 caractères")
      */
     private $username;
+
+
+    // /**
+    //  * @ORM\Column(type="string", length=255, nullable=false)
+    //  */
+    // private $file;
+
+    // /**
+    //  *
+    //  * @Vich\UploadableField(mapping="user_images", fileNameProperty="file")
+    //  *
+    //  * @var File
+    //  */
+    // private $profileFile;
+
 
     /**
      * @ORM\Column(type="json")
@@ -121,9 +140,9 @@ class User implements UserInterface
      */
     private $createdAt;
 
-     /**
-     * @ORM\Column(type="datetime", nullable=true))
-     */
+    /**
+    * @ORM\Column(type="datetime", nullable=true))
+    */
     private $updatedAt;
 
 
@@ -155,6 +174,34 @@ class User implements UserInterface
     {
         return (string) $this->username;
     }
+
+    // public function getFile(): ?string
+    // {
+    //     return $this->file;
+    // }
+
+    // public function setFile(string $file): self
+    // {
+    //     $this->file = $file;
+
+    //     return $this;
+    // }
+
+    // public function setProfileFile(?File $file = null): void
+    // {
+    //     $this->profileFile = $file;
+
+    //     if ($file) {
+    //         // It is required that at least one field changes if you are using doctrine
+    //         // otherwise the event listeners won't be called and the file is lost
+    //         $this->updatedAt = new \DateTimeImmutable();
+    //     }
+    // }
+
+    // public function getProfileFile(): ?File
+    // {
+    //     return $this->profileFile;
+    // }
 
     /**
      * @see UserInterface

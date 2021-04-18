@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Form\EditProfileType;
 use App\Form\EditPasswordType;
+use App\Form\ProfileImageType;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,6 +19,29 @@ class UserController extends AbstractController
     public function profile(): Response
     {
         return $this->render('user/profile.html.twig');
+        // $user = $this->getUser();
+        // $formEditProfileImage =  $this->createForm(ProfileImageType::class, $user);
+
+        // $formEditProfileImage->handleRequest($request);
+
+        // if ($formEditProfileImage->isSubmitted() && $formEditProfileImage->isValid()) {
+        //     if ($user->getId()) {
+        //         $user->setUpdatedAt(new \DateTime());
+        //     }
+        //     $manager->persist($user);
+        //     $manager->flush();
+
+        //     $this->addFlash(
+        //         'success',
+        //         'Image de profil mise à jour avec succès !'
+        //     );
+
+
+        // }
+        // return $this->render('user/profile.html.twig', [
+        //     'user' => $user,
+        //     'formEditProfileImage' => $formEditProfileImage->createView(),
+        // ]);
     }
 
     #[Route('/profil/modifier', name: 'app_user_update')]

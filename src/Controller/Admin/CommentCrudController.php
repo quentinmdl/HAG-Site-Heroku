@@ -49,4 +49,10 @@ class CommentCrudController extends AbstractCrudController
             ->add('article')
             ->add('author');
     }
+
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            ->SetDefaultSort(['createdAt' => 'Desc']);
+    }
 }

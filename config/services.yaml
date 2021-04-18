@@ -4,7 +4,10 @@
 # Put parameters here that don't need to change on each machine where the app is deployed
 # https://symfony.com/doc/current/best_practices/configuration.html#application-related-configuration
 parameters:
-
+    user_images : /uploads/users
+    article_images : /uploads/articles
+    session_images : /uploads/sessions
+    challenge_images : /uploads/challenges
 services:
     # default configuration for services in *this* file
     _defaults:

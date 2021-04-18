@@ -12,6 +12,9 @@
                 <div class="text-center">
                      <h2>{{ article.title }}</h2>
                 </div>
+                <div class="text-center">
+                    <img src="{{ vich_uploader_asset(article, 'imageFile') }}"  width="250" height="auto" alt="img article">
+                </div>
                 <div style="word-wrap: break-word;">
                     <p> {{ article.description|raw  }} </p>
                 </div>

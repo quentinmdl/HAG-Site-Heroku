@@ -19,24 +19,6 @@ class ArticleRepository extends ServiceEntityRepository
         parent::__construct($registry, Article::class);
     }
 
-    public function findAuthorComment($articleId)
-    {
-
-        $entityManager = $this->getEntityManager();
-
-        $query = $entityManager->createQuery(
-            'SELECT c.author
-            FROM App\Entity\Article a
-            LEFT JOIN App\Entity\Comment c 
-            WITH a.id = c.article
-            WHERE a.id = :articleId'
-        )->setParameter('articleId', $articleId);
-
-        // returns an array of Product objects
-        return $query->getResult();
-
-    }
-
     // /**
     //  * @return Article[] Returns an array of Article objects
     //  */

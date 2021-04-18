@@ -69,4 +69,10 @@ class UserCrudController extends AbstractCrudController
             ->add('groups')
             ->add('email');
     }
+
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            ->SetDefaultSort(['createdAt' => 'Desc']);
+    }
 }
