@@ -13,6 +13,8 @@ import 'popper.js';
 import 'bootstrap';
 import 'font-awesome/css/font-awesome.css';
 
+// import 'stripe';
+
 import '../favicon.ico'
 
 

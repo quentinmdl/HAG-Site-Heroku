@@ -52,8 +52,10 @@ class AdminDashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Groupe(s)', 'fas fa-user-friends', Group::class);
         yield MenuItem::linkToCrud('Défi(s)', 'fas fa-gamepad', Challenge::class);
 
-
         yield MenuItem::section('Comptes');
         yield MenuItem::linkToCrud('Utilisateur(s)', 'fas fa-user', User::class);
+
+        yield MenuItem::section('Paiement');
+        yield MenuItem::linkToUrl('Vente(s)', 'fa fa-credit-card', 'https://dashboard.stripe.com/test/dashboard');
     }
 }
