@@ -22,9 +22,9 @@ class CategoryCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id')->hideOnForm(),
-            TextField::new('title'),
-            TextEditorField::new('description'),
-            DateTimeField::new('createdAt')->hideOnForm(),
+            TextField::new('title')->setLabel('Titre'),
+            TextEditorField::new('description')->setLabel('Description'),
+            DateTimeField::new('createdAt')->hideOnForm()->setLabel('Créée à'),
         ];
     }
 
@@ -33,6 +33,5 @@ class CategoryCrudController extends AbstractCrudController
     {
         return $filters
             ->add('title');
-    }    
-    
+    }
 }

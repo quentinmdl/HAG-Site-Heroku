@@ -27,10 +27,10 @@ class CommentCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id')->hideOnForm(),
-            AssociationField::new('article')->hideOnForm(),
-            TextField::new('author')->hideOnForm(),
-            TextEditorField::new('content')->hideOnForm(),
-            DateTimeField::new('createdAt')->hideOnForm(),
+            AssociationField::new('article')->hideOnForm()->setLabel('Article'),
+            TextField::new('author')->hideOnForm()->setLabel('Auteur'),
+            TextEditorField::new('content')->hideOnForm()->setLabel('Contenu'),
+            DateTimeField::new('createdAt')->hideOnForm()->setLabel('Créé à'),
         ];
     }
 
@@ -48,6 +48,5 @@ class CommentCrudController extends AbstractCrudController
         return $filters
             ->add('article')
             ->add('author');
-    }    
-    
+    }
 }

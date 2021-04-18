@@ -10,6 +10,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IntegerField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
@@ -26,10 +27,16 @@ class GroupCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id')->hideOnForm(),
-            TextField::new('name')->hideOnForm(),
-            // ArrayField::new('state'),
-            IntegerField::new('score'),
-            DateTimeField::new('createdAt')->hideOnForm(),
+            TextField::new('name')->hideOnForm()->setLabel('Nom'),
+            ChoiceField::new('Statut')
+                ->setLabel("Statut")
+                ->setChoices([
+                        'Ouvert' => 'ouvert',
+                        'Complet' => 'complet',
+                        ])
+                ->allowMultipleChoices(true),
+            IntegerField::new('score')->hideOnForm()->setLabel('Score'),
+            DateTimeField::new('createdAt')->hideOnForm()->setLabel('Créé à'),
         ];
     }
     
@@ -45,5 +52,5 @@ class GroupCrudController extends AbstractCrudController
     {
         return $filters
             ->add('name');
-    }    
+    }
 }

@@ -79,6 +79,7 @@ class Challenge
     public function __construct()
     {
         $this->groups = new ArrayCollection();
+        $this->setCreatedAt(new \DateTime('Europe/Monaco'));
     }
 
     public function getId(): ?int

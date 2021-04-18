@@ -2,7 +2,6 @@
 
 namespace App\Entity;
 
-
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\SessionRepository;
 use Doctrine\Common\Collections\Collection;
@@ -34,19 +33,19 @@ class Session
     private $description;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="datetime")
      */
-    private $startdate;
+    private $startDate;
 
     /**
-     * @ORM\Column(type="date")
+     * @ORM\Column(type="datetime")
      */
-    private $enddate;
+    private $endDate;
 
     /**
-     * @ORM\Column(type="array")
-     */
-    private $state = ['ouverte', 'en cours', 'finie'];
+    * @ORM\Column(type="json")
+    */
+    private $state = [];
 
     /**
      * @ORM\OneToMany(targetEntity=Group::class, mappedBy="session")
@@ -112,33 +111,37 @@ class Session
     }
 
 
-    public function getStartdate(): ?\DateTimeInterface
+    public function getStartDate(): ?\DateTimeInterface
     {
-        return $this->startdate;
+        return $this->startDate;
     }
 
-    public function setStartdate(\DateTimeInterface $startdate): self
+    public function setStartdate(\DateTimeInterface $startDate): self
     {
-        $this->startdate = $startdate;
+        $this->startDate = $startDate;
 
         return $this;
     }
 
-    public function getEnddate(): ?\DateTimeInterface
+    public function getEndDate(): ?\DateTimeInterface
     {
-        return $this->enddate;
+        return $this->endDate;
     }
 
-    public function setEnddate(\DateTimeInterface $enddate): self
+    public function setEnddate(\DateTimeInterface $endDate): self
     {
-        $this->enddate = $enddate;
+        $this->endDate = $endDate;
 
         return $this;
     }
 
-    public function getState(): ?array
+    public function getState(): array
     {
-        return $this->state;
+        $state = $this->state;
+        // guarantee every group at least was open
+        $state[] = '';
+
+        return array_unique($state);
     }
 
     public function setState(array $state): self
@@ -242,5 +245,12 @@ class Session
         $this->updatedAt = $updatedAt;
 
         return $this;
+    }
+
+
+
+    public function __toString()
+    {
+        return $this->name;
     }
 }

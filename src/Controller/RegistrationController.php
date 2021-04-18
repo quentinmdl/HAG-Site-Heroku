@@ -14,14 +14,10 @@ use Symfony\Component\Security\Guard\GuardAuthenticatorHandler;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
-
 class RegistrationController extends AbstractController
 {
-
-
     public function __construct()
     {
-        
     }
 
 
@@ -39,9 +35,9 @@ class RegistrationController extends AbstractController
                     $user,
                     $form->get('password')->getData()
                 )
-                );
+            );
 
-            $user->setRoles(array("ROLE_USER")); 
+            $user->setRoles(array('ROLE_USER'));
             $user->setCreatedAt(new \DateTime());
 
            
@@ -62,5 +58,4 @@ class RegistrationController extends AbstractController
             'registrationForm' => $form->createView(),
         ]);
     }
-
 }

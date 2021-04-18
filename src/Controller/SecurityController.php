@@ -2,7 +2,6 @@
 
 namespace App\Controller;
 
-
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
@@ -39,5 +38,4 @@ class SecurityController extends AbstractController
     {
         throw new \LogicException('This method can be blank');
     }
-
 }

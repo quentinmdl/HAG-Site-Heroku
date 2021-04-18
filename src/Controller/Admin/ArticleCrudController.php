@@ -20,7 +20,6 @@ class ArticleCrudController extends AbstractCrudController
     public static function getEntityFqcn(): string
     {
         return Article::class;
-        
     }
 
     
@@ -28,11 +27,11 @@ class ArticleCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id')->hideOnForm(),
-            TextField::new('title'),
-            TextEditorField::new('description'),
-            AssociationField::new('category'),
-            UrlField::new('image'),
-            DateTimeField::new('createdAt')->hideOnForm(),
+            TextField::new('title')->setLabel('Titre'),
+            TextEditorField::new('description')->setLabel('Contenu'),
+            AssociationField::new('category')->setLabel('Catégorie(s)'),
+            UrlField::new('image')->setLabel('Image/Vidéo'),
+            DateTimeField::new('createdAt')->hideOnForm()->setLabel('Créé à'),
         ];
     }
     
@@ -41,5 +40,11 @@ class ArticleCrudController extends AbstractCrudController
     {
         return $filters
             ->add('title');
-    }    
+    }
+
+    public function configureCrud(Crud $crud): Crud
+    {
+        return $crud
+            ->SetDefaultSort(['createdAt' => 'Desc']);
+    }
 }

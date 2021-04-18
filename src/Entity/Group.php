@@ -26,9 +26,9 @@ class Group
     private $name;
 
     /**
-     * @ORM\Column(type="array")
-     */
-    private $state = ['ouvert', 'complet'];
+    * @ORM\Column(type="json")
+    */
+    private $state = [];
 
     /**
      * @ORM\Column(type="integer")
@@ -74,11 +74,15 @@ class Group
         return $this;
     }
 
-    public function getState(): ?array
+
+    public function getState(): array
     {
         $state = $this->state;
+        // guarantee every group at least was open
+        $state[] = '';
+
+        return array_unique($state);
     }
-    
 
     public function setState(array $state): self
     {
@@ -86,7 +90,6 @@ class Group
 
         return $this;
     }
-
     
 
     public function getScore(): ?int

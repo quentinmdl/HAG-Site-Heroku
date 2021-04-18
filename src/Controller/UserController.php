@@ -50,14 +50,12 @@ class UserController extends AbstractController
     #[Route('/profil/modifier/mdp', name: 'app_password_update')]
     public function editPasswordProfile(Request $request, ObjectManager $manager, UserPasswordEncoderInterface $passwordEncoder): Response
     {
-
         $user = $this->getUser();
         $formEditPasswordUser =  $this->createForm(EditPasswordType::class, $user);
         
         $formEditPasswordUser->handleRequest($request);
 
         if ($formEditPasswordUser->isSubmitted() && $formEditPasswordUser->isValid()) {
-
             $user->setPassword(
                 $passwordEncoder->encodePassword(
                     $user,

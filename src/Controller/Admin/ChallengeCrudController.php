@@ -24,14 +24,14 @@ class ChallengeCrudController extends AbstractCrudController
     {
         return [
             IdField::new('id')->hideOnForm(),
-            AssociationField::new('session'),
-            TextEditorField::new('description'),
-            UrlField::new('image'),
-            TextField::new('location'),
-            IntegerField::new('point'),
-            IntegerField::new('progession')->hideOnForm(),
-            DateTimeField::new('createdAt')->hideOnForm(),
+            AssociationField::new('session')->setLabel('Session'),
+            TextField::new('name')->setLabel('Nom'),
+            TextEditorField::new('description')->setLabel('Description'),
+            //UrlField::new('image')->setLabel('Image'),
+            TextField::new('location')->setLabel('Lieux'),
+            IntegerField::new('point')->setLabel('Point(s)'),
+            // IntegerField::new('progession')->hideOnForm()->setLabel('Progression'),
+            DateTimeField::new('createdAt')->hideOnForm()->setLabel('Créé à')
         ];
     }
-
 }

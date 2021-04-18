@@ -15,6 +15,19 @@
                     <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/7e/Circle-icons-profile.svg/1200px-Circle-icons-profile.svg.png" width="100" heigth="auto" alt="image de profil">
                     <h5 class="card-title">Bonjour {{ app.user.firstname }} {{ app.user.lastname }}</h5>
                     <p class="card-text">Bienvenue sur votre profil</p>
+                    <div style="margin-top : 10%">
+                        Vous êtes un 
+                        {% for role in app.user.roles %}
+                          
+                            {% if role == "ROLE_USER" %}
+                                Utilisateur
+                            {% elseif role == "ROLE_SUPER_ADMIN" %}
+                                SuperAdmin /
+                            {% elseif role == "ROLE_ADMIN" %}
+                                Admin 
+                            {% endif %}
+                        {% endfor %}
+                    </div> 
                 </div>
                 <div class="card-footer">
                     <p class="card-text">Inscrit depuis le {{ app.user.createdAt | date('d/m/Y')}} à {{ app.user.createdAt | date('h:m')}}</p>
