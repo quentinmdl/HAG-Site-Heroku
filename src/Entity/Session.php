@@ -32,11 +32,11 @@ class Session
      */
     private $name;
 
-    // /**
-    //  * @Gedmo\Slug(fields={"name"})
-    //  * @ORM\Column(type="string", length=255, unique=true)
-    //  */
-    // private $slug;
+    /**
+     * @Gedmo\Slug(fields={"name"})
+     * @ORM\Column(type="string", length=255, unique=true)
+     */
+    private $slug;
 
     /**
      * @ORM\Column(type="string", length=255, nullable=false)
@@ -46,7 +46,7 @@ class Session
     /**
      *
      * @Vich\UploadableField(mapping="session_images", fileNameProperty="file")
-     *
+     * @Assert\Expression("this.getFile() or this.getImageFile()", message="Une image est attendue")
      * @var File
      */
     private $imageFile;
@@ -82,12 +82,6 @@ class Session
      * @ORM\OneToMany(targetEntity=Challenge::class, mappedBy="session", orphanRemoval=true)
      */
     private $challenges;
-
-    // /**
-    //  * @ORM\ManyToOne(targetEntity=Admin::class, inversedBy="session")
-    //  * @ORM\JoinColumn(nullable=false)
-    //  */
-    // private $admin;
 
     /**
      * @ORM\Column(type="datetime")
@@ -150,12 +144,6 @@ class Session
     public function setImageFile(?File $file = null): void
     {
         $this->imageFile = $file;
-
-        if ($file) {
-            // It is required that at least one field changes if you are using doctrine
-            // otherwise the event listeners won't be called and the file is lost
-            $this->updatedAt = new \DateTimeImmutable();
-        }
     }
 
     public function getImageFile(): ?File
@@ -276,18 +264,6 @@ class Session
         return $this;
     }
 
-    // public function getAdmin(): ?Admin
-    // {
-    //     return $this->admin;
-    // }
-
-    // public function setAdmin(?Admin $admin): self
-    // {
-    //     $this->admin = $admin;
-
-    //     return $this;
-    // }
-
     public function getCreatedAt(): ?\DateTimeInterface
     {
         return $this->createdAt;
@@ -311,8 +287,6 @@ class Session
 
         return $this;
     }
-
-
 
     public function __toString()
     {

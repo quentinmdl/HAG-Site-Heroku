@@ -2,15 +2,17 @@
 
 namespace App\Entity;
 
-use App\Repository\ChallengeRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-
 use Gedmo\Mapping\Annotation as Gedmo;
+use App\Repository\ChallengeRepository;
+use Doctrine\Common\Collections\Collection;
 
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\HttpFoundation\File\File;
+
+use Doctrine\Common\Collections\ArrayCollection;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ChallengeRepository::class)
@@ -37,7 +39,7 @@ class Challenge
     private $slug;
 
     /**
-     * @ORM\Column(type="string", length=255, nullable=false)
+     * @ORM\Column(type="string", length=255, nullable=true)
      */
     private $file;
 
@@ -72,14 +74,11 @@ class Challenge
     /**
      * @ORM\ManyToOne(targetEntity=Session::class, inversedBy="challenges")
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotBlank( message ="Vous devez choisir une session");
      */
     private $session;
 
-    // /**
-    //  * @ORM\ManyToOne(targetEntity=Admin::class, inversedBy="challenge")
-    //  * @ORM\JoinColumn(nullable=false)
-    //  */
-    // private $admin;
+
 
     /**
      * @ORM\ManyToMany(targetEntity=Group::class, mappedBy="challenge")
@@ -146,12 +145,6 @@ class Challenge
     public function setImageFile(?File $file = null): void
     {
         $this->imageFile = $file;
-
-        if ($file) {
-            // It is required that at least one field changes if you are using doctrine
-            // otherwise the event listeners won't be called and the file is lost
-            $this->updatedAt = new \DateTimeImmutable();
-        }
     }
 
     public function getImageFile(): ?File
@@ -231,18 +224,7 @@ class Challenge
         return $this;
     }
 
-    // public function getAdmin(): ?Admin
-    // {
-    //     return $this->admin;
-    // }
-
-    // public function setAdmin(?Admin $admin): self
-    // {
-    //     $this->admin = $admin;
-
-    //     return $this;
-    // }
-
+    
     /**
      * @return Collection|Group[]
      */

@@ -39,6 +39,7 @@ class GroupCrudController extends AbstractCrudController
             IntegerField::new('score')->hideOnForm()->setLabel('Score'),
             SlugField::new('slug')->setTargetFieldName('name')->hideOnForm()->hideOnIndex(),
             DateTimeField::new('createdAt')->hideOnForm()->setLabel('Créé à'),
+            DateTimeField::new('updatedAt')->hideOnForm()->setLabel('Modifié à')
         ];
     }
     

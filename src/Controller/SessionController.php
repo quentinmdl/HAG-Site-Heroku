@@ -60,14 +60,14 @@ class SessionController extends AbstractController
     }
 
 
-    #[Route('/session-checkout/erreur', name: 'checkout_error')]
+    #[Route('/session-vérification/erreur', name: 'checkout_error')]
     public function error(): Response
     {
         return $this->render('session/payment/error.html.twig', [
         ]);
     }
 
-    #[Route('/session-checkout/succès', name: 'checkout_success')]
+    #[Route('/session-vérification/succès', name: 'checkout_success')]
     public function success(): Response
     {
         return $this->render('session/payment/success.html.twig', [

@@ -51,16 +51,15 @@ class UserCrudController extends AbstractCrudController
             TextField::new('phone')->hideOnForm()->setLabel('Téléphone'),
             DateField::new('dateofbirth')->hideOnForm()->setLabel('Date de naissance'),
             DateTimeField::new('createdAt')->hideOnForm()->setLabel('Inscrit le'),
+            DateTimeField::new('updatedAt')->hideOnForm()->setLabel('Modifié à')
         ];
     }
 
     public function configureActions(Actions $actions): Actions
     {
         return $actions
-            // ...
-            // ->remove(Crud::PAGE_INDEX, Action::NEW)
-            // ->remove(Crud::PAGE_INDEX, Action:: EDIT)
-        ;
+            
+            ->remove(Crud::PAGE_INDEX, Action::NEW);
     }
 
     public function configureFilters(Filters $filters): Filters

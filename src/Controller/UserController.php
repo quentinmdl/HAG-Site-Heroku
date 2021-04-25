@@ -102,12 +102,7 @@ class UserController extends AbstractController
         ]);
     }
 
-    #[Route('/profil/groupe', name: 'app_user_group')]
-    public function groupProfile(): Response
-    {
-        return $this->render('user/group/profileGroup.html.twig');
-    }
-
+   
     #[Route('/profil/session', name: 'app_user_session')]
     public function sessionProfile(): Response
     {

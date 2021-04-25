@@ -1,7 +1,29 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
 
 {% block body %}
-<p>Home</p>
+<div class="main-banner">
+    <img src="{{ asset('build/images/AHAG-Banner.jpg') }}" width="100" height="auto" alt="image du site">
+</div>
+<p class="text-center accroche"><b>Home A Game : Un jeu d'aventure hors du commun pour vivre le voyage autrement</b></p>
+<section class="home">
+    <div class="row"> 
+        <div class="about col-12 col-md-8">  
+            <h1><b>Qui sommes nous ?</b></h1>
+            <div>
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu ultricies lectus. Proin sagittis leo porta pharetra congue. Vestibulum pulvinar consequat turpis, ut auctor ligula fringilla sed. Nullam vitae leo dapibus, convallis dolor eu, pretium neque. Praesent velit nunc, venenatis eget nisi lacinia, finibus tincidunt libero. Quisque sed ex ipsum. Sed ante tortor, auctor vitae odio nec, feugiat elementum ante. Proin non pellentesque justo, at auctor libero. Donec mi turpis, varius quis nisi vel, posuere ultricies sapien. Morbi eget egestas arcu, sed cursus enim. Curabitur a mollis sapien. Nullam fermentum mollis facilisis. Nam tristique libero elit, in porta leo vulputate ac. Curabitur et rhoncus sapien, a pharetra ex. Nam aliquet nec purus sed aliquam. Nullam sollicitudin lorem nec ultrices malesuada.</p>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="concept col-12 col-md-8">     
+            <h1><b>Le Concept</b></h1>
+            <div>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu ultricies lectus. Proin sagittis leo porta pharetra congue. Vestibulum pulvinar consequat turpis, ut auctor ligula fringilla sed. Nullam vitae leo dapibus, convallis dolor eu, pretium neque. Praesent velit nunc, venenatis eget nisi lacinia, finibus tincidunt libero. Quisque sed ex ipsum. Sed ante tortor, auctor vitae odio nec, feugiat elementum ante. Proin non pellentesque justo, at auctor libero. Donec mi turpis, varius quis nisi vel, posuere ultricies sapien. Morbi eget egestas arcu, sed cursus enim. Curabitur a mollis sapien. Nullam fermentum mollis facilisis. Nam tristique libero elit, in porta leo vulputate ac. Curabitur et rhoncus sapien, a pharetra ex. Nam aliquet nec purus sed aliquam. Nullam sollicitudin lorem nec ultrices malesuada.</p>
+            </div>
+        </div>
+    </div>
+</section>
 {% endblock %}

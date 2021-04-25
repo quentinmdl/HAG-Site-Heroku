@@ -8,10 +8,10 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class GroupController extends AbstractController
 {
-    #[Route('/group', name: 'group')]
+    #[Route('/profil/groupe', name: 'app_user_group')]
     public function index(): Response
     {
-        return $this->render('group/index.html.twig', [
+        return $this->render('user/group/profileGroup.html.twig', [
             'controller_name' => 'GroupController',
         ]);
     }

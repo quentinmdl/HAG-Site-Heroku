@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use DateTime;
 use App\Entity\Category;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
@@ -9,7 +10,9 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
 use EasyCorp\Bundle\EasyAdminBundle\Field\SlugField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
+use EasyCorp\Bundle\EasyAdminBundle\Event\AfterEntityUpdatedEvent;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
 class CategoryCrudController extends AbstractCrudController
@@ -25,9 +28,10 @@ class CategoryCrudController extends AbstractCrudController
         return [
             IdField::new('id')->hideOnForm(),
             TextField::new('title')->setLabel('Titre'),
-            TextEditorField::new('description')->setLabel('Description'),
+            TextareaField::new('description')->setLabel('Description'),
             DateTimeField::new('createdAt')->hideOnForm()->setLabel('Créée à'),
-            SlugField::new('slug')->setTargetFieldName('title')->hideOnForm()->hideOnIndex(),
+            DateTimeField::new('updatedAt')->hideOnForm()->setLabel('Modifiée à'),
+            SlugField::new('slug')->setTargetFieldName('title')->hideOnForm()->hideOnIndex()
         ];
     }
 

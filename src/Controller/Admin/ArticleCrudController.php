@@ -31,12 +31,15 @@ class ArticleCrudController extends AbstractCrudController
         return [
             IdField::new('id')->hideOnForm(),
             TextField::new('title')->setLabel('Titre'),
-            TextEditorField::new('description')->setLabel('Contenu'),
+            TextareaField::new('content')->setLabel('Contenu'),
             AssociationField::new('category')->setLabel('Catégorie(s)'),
             TextField::new('imageFile')->setFormType(VichImageType::class)->onlyWhenCreating()->setLabel('Image/Vidéo'),
-            ImageField::new('file')->setBasePath('/uploads/articles/')->onlyOnIndex(),
+            ImageField::new('file')->setBasePath('/uploads/articles/')->onlyOnIndex()->setLabel('Image'),
             SlugField::new('slug')->setTargetFieldName('title')->setLabel('Titre pour URL')->hideOnIndex(),
             DateTimeField::new('createdAt')->hideOnForm()->setLabel('Créé à'),
+            DateTimeField::new('updatedAt')->hideOnForm()->setLabel('Modifié à'),
+            TextField::new('createdBy')->hideOnForm()->setLabel('Créé par'),
+            TextField::new('updatedBy')->hideOnForm()->setLabel('Modifié par'),
         ];
     }
     

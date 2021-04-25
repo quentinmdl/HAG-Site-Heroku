@@ -13,6 +13,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Field\ArrayField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ChoiceField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
@@ -37,12 +38,14 @@ class SessionCrudController extends AbstractCrudController
                         'Finie' => 'finie',
                         ])
                 ->allowMultipleChoices(true),
-            TextEditorField::new('description')->setLabel('Description'),
+            TextareaField::new('description')->setLabel('Description'),
             TextField::new('imageFile')->setFormType(VichImageType::class)->onlyWhenCreating()->setLabel('Image/Vidéo'),
-            ImageField::new('file')->setBasePath('/uploads/sessions/')->onlyOnIndex(),
+            ImageField::new('file')->setBasePath('/uploads/sessions/')->onlyOnIndex()->setLabel('Image'),
             DateTimeField::new('startDate')->setFormat('dd-MM-YY HH:mm')->renderAsChoice()->setLabel('Date de début'),
             DateTimeField::new('endDate')->setFormat('dd-MM-YY HH:mm')->renderAsChoice()->setLabel('Date de fin'),
             SlugField::new('slug')->setTargetFieldName('name')->hideOnForm()->hideOnIndex(),
+            DateTimeField::new('createdAt')->hideOnForm()->setLabel('Créée à'),
+            DateTimeField::new('updatedAt')->hideOnForm()->setLabel('Modifiée à')
         ];
     }
 

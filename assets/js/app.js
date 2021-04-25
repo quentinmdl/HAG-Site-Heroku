@@ -15,8 +15,9 @@ import 'font-awesome/css/font-awesome.css';
 
 // import 'stripe';
 
-import '../favicon.ico'
-
+import '../favicon.ico';
+import '../AHAG.png';
+import '../AHAG-Banner.jpg';
 
 // Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
 const $ = require('jquery');

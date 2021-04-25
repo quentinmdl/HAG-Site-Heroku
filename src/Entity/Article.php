@@ -45,24 +45,18 @@ class Article
     private $file;
 
     /**
-     *
      * @Vich\UploadableField(mapping="article_images", fileNameProperty="file")
-     *
+     * @Assert\Expression("this.getFile() or this.getImageFile()", message="Une image est attendue")
      * @var File
      */
     private $imageFile;
 
     /**
      * @ORM\Column(type="text")
-     * @Assert\Length(min=20, minMessage="La description doit comporter 10 caractères minimum")
+     * @Assert\Length(min=20, minMessage="Le contenu doit comporter 10 caractères minimum")
      */
-    private $description;
+    private $content;
 
-    // /**
-    //  * @ORM\ManyToOne(targetEntity=Admin::class, inversedBy="article")
-    //  * @ORM\JoinColumn(nullable=false)
-    //  */
-    // private $admin;
 
     /**
      * @ORM\Column(type="datetime")
@@ -77,6 +71,7 @@ class Article
     /**
      * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="articles")
      * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotBlank( message ="Vous devez choisir une catégorie");
      */
     private $category;
 
@@ -135,12 +130,6 @@ class Article
     public function setImageFile(?File $file = null): void
     {
         $this->imageFile = $file;
-
-        if ($file) {
-            // It is required that at least one field changes if you are using doctrine
-            // otherwise the event listeners won't be called and the file is lost
-            $this->updatedAt = new \DateTimeImmutable();
-        }
     }
 
     public function getImageFile(): ?File
@@ -149,30 +138,19 @@ class Article
     }
 
 
-    public function getDescription(): ?string
+    public function getContent(): ?string
     {
-        return $this->description;
+        return $this->content;
     }
 
-    public function setDescription(string $description): self
+    public function setContent(string $content): self
     {
-        $this->description = $description;
+        $this->content = $content;
 
         return $this;
     }
 
-    // public function getAdmin(): ?Admin
-    // {
-    //     return $this->admin;
-    // }
-
-    // public function setAdmin(?Admin $admin): self
-    // {
-    //     $this->admin = $admin;
-
-    //     return $this;
-    // }
-
+    
     public function getCreatedAt(): ?\DateTimeInterface
     {
         return $this->createdAt;

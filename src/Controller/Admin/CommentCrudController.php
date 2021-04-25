@@ -11,6 +11,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\TextareaField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextEditorField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
@@ -29,7 +30,7 @@ class CommentCrudController extends AbstractCrudController
             IdField::new('id')->hideOnForm(),
             AssociationField::new('article')->hideOnForm()->setLabel('Article'),
             TextField::new('author')->hideOnForm()->setLabel('Auteur'),
-            TextEditorField::new('content')->hideOnForm()->setLabel('Contenu'),
+            TextareaField::new('content')->hideOnForm()->setLabel('Contenu'),
             DateTimeField::new('createdAt')->hideOnForm()->setLabel('Créé à'),
         ];
     }
