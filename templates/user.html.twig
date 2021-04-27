@@ -20,8 +20,7 @@
         <noscript>Javascript est désactivé ou bien n'est pas supporté par votre navigateur!</noscript>
         
         {% include 'base/navbar.html.twig' %}
-        <div class="container-fluid h-100">
-            <div class="row h-100">
+        <div class="row profile">
                 <aside class="col-12 col-md-1 p-0 bg-dark">
                     <nav class="navbar navbar-expand navbar-dark bg-dark flex-md-column flex-row align-items-start">
                         <div class="collapse navbar-collapse">
@@ -39,16 +38,10 @@
                         </div>
                     </nav>
                 </aside>
-                <main class="col">
+                <main class="col-xs-12 col-md-11 profile-content">
                     {% block body %} {% endblock %}
                 </main>
-            </div>
         </div>
-        {# <div class="nav nav-pills nav-fill">
-            <a class="nav-item nav-link" href="{{ path('app_user_profile')}}" role="tab"  aria-selected="true">Mon profil</a>
-            <a class="nav-item nav-link" href="{{ path('app_user_group')}}" role="tab"  aria-selected="true">Mon groupe</a>
-            <a class="nav-item nav-link" href="{{ path('app_user_session')}}" role="tab"  aria-selected="true">Ma session</a>
-        </div> #}
     
         {% include 'base/footer.html.twig' %}
 

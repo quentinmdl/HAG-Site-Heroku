@@ -214,3 +214,27 @@ p.accroche {
 
 
 /* END ARTICLE */
+
+
+
+
+
+/* PROFILE */
+
+.profile {
+
+}
+.profile-content {
+    padding: 120Px 0;
+}
+
+
+
+@media screen and (max-width: 840px) {
+    .profile-content {
+        padding: 0;
+    }
+}
+
+
+/* END PROFILE */
