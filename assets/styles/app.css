@@ -79,16 +79,19 @@ p.accroche {
 }
 
 .home {
-    padding: 70px 200px;
+    padding: 70px 100px;
 }
 
 
 @media screen and (max-width: 840px) {
     .about {
-        padding: 30px 20px;
+        padding: 10px 20px;
     }
     .concept {
-        padding: 30px 20px;
+        padding: 10px 20px;
+    }
+    .home {
+        padding: 0;
     }
 }
 
@@ -221,15 +224,11 @@ p.accroche {
 
 /* PROFILE */
 
-.profile {
-
+@media screen and (min-width: 1400px) {
+    .profile-content {
+        padding: 125Px 0;
+    }
 }
-.profile-content {
-    padding: 120Px 0;
-}
-
-
-
 @media screen and (max-width: 840px) {
     .profile-content {
         padding: 0;
