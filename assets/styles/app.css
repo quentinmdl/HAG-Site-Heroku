@@ -60,7 +60,16 @@ p{
 /* END FOOTER */
 
 
+/* LOGIN */
 
+.login-href a {
+    display: block;
+    padding: 5px;
+    text-decoration: none;
+    color: black;
+}
+
+/* END LOGIN */
 
 /* HOME */
 
