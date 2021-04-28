@@ -19,6 +19,7 @@ import '../favicon.ico';
 import '../AHAG.png';
 import '../AHAG-Banner.jpg';
 
+// import '../js/session.js';
 // Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
 const $ = require('jquery');
 
