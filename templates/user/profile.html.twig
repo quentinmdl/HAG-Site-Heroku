@@ -10,8 +10,9 @@
             </div>
         {% endfor %}
         <div class="col-md-3 col-xs-12">
-            <div class="card text-center h-100">
-                <div class="card-body">
+            <p><b>Profil</b></p>
+            <div class="profile-user">
+                <div class="profile-user-card">
                     <img src=""  width="100" heigth="auto" alt="image de profil">
                     <h5 class="card-title">Bonjour {{ app.user.firstname }} {{ app.user.lastname }}</h5>
                     <p class="card-text text-center">Bienvenue sur votre profil</p>
@@ -37,15 +38,15 @@
                         </div>
                     {{ form_end(formEditProfileImage)}} #}
                 </div>
-                <div class="card-footer">
-                    <p class="card-text">Inscrit depuis le {{ app.user.createdAt | date('d/m/Y')}} à {{ app.user.createdAt | date('h:m')}}</p>
+                <div class="profile-user-card-footer">
+                    <p>Inscrit depuis le {{ app.user.createdAt | date('d/m/Y')}} à {{ app.user.createdAt | date('h:m')}}</p>
                 </div>
             </div>
         </div>
-        <div class="col-md-6 col-xs-122">
-            <div class="card mx-auto">
-                <div class="card-body">
-                    <h5 class="card-title">Vos Informations</h5>
+        <div class="col-md-6 col-xs-12">
+          <p><b>Vos Informations</b></p>
+            <div class="profile-user">
+                <div class="profile-user-informations">
                     <div class="row mx-auto">
                         <div>
                             <p>Nom : {{ app.user.lastname }} <br></p>

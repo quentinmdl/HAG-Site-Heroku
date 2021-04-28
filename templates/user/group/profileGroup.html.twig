@@ -3,5 +3,24 @@
 
 
 {% block body %}
-    <p>My Group</p>
+    <div class="row justify-content-md-center" style="padding: 70px 0;">
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+        <div class="col-md-7 col-xs-12">
+              <p><b>Espace Group</b></p>
+            <div class="card-group">
+                <div class="profile-group">
+                    <h3>Vous faites désormais partie de la session actuelle</h3>
+                    <div class="button-group">
+                        <button class="btn btn-dark">Créer un groupe</button>
+                        <p class="text-center">ou</p>
+                         <button class="btn btn-dark">Rejoindre un groupe</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}

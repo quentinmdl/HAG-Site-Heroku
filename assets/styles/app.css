@@ -231,11 +231,26 @@ p.accroche {
 
 
 
-/* PROFILE */
+/* PROFILE USER*/
 
+.profile-user {
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    text-align: center;
+    padding: 30px;
+}
+
+.profile-user-card-footer {
+    text-align: center;
+    bottom: 0 !important;
+}
+.profile-user-card-footer p{
+    text-align: center;
+    padding: 5px; 
+    margin: 0;   
+}
 @media screen and (min-width: 1400px) {
     .profile-content {
-        padding: 125Px 0;
+        padding: 120Px 0;
     }
 }
 @media screen and (max-width: 840px) {
@@ -244,5 +259,39 @@ p.accroche {
     }
 }
 
-
 /* END PROFILE */
+
+
+/* GROUP PROFILE */
+.card-group {
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    display: flex;
+    justify-content: center;
+}
+.profile-group {
+    padding: 73px;
+    text-align: center;
+}
+.button-group {
+    margin-top: 50px;
+    text-align: center;
+    display: block;
+}
+.button-group p {
+    margin: 0;
+}
+.button-group button{
+    padding: 10px;
+}
+
+@media screen and (max-width: 840px) {
+    .profile-group {
+        padding: 20px;
+    }
+    .button-group{
+        padding: 0 50px;
+    }
+}
+
+
+/*END PROFILE */
