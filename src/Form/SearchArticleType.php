@@ -15,7 +15,11 @@ class SearchArticleType extends AbstractType
         $builder
             ->add('category', EntityType::class, [
                 'class' => Category::class,
-                'choice_label' => 'title'
+                'choice_label' => 'title',
+                'label'   => false,
+                'attr' => array(
+                    'class' => 'selectpicker'
+                ),
             ]);
     }
 

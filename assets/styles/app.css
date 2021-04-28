@@ -109,6 +109,12 @@ p.accroche {
 
 /* ARTICLES */
 
+.search-filter{
+    padding: 20Px;
+}
+.article-filter {
+    display: flex;
+}
 .article {
     padding: 20px;
 }

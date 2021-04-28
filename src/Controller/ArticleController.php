@@ -8,15 +8,16 @@ use App\Entity\Category;
 use App\Form\ArticleType;
 use App\Form\CommentType;
 use App\Form\CategoryType;
-use App\Form\RemoveCategoryType;
+use App\Form\SearchArticleType;
 
+use App\Form\RemoveCategoryType;
 use App\Repository\ArticleRepository;
 use App\Repository\CategoryRepository;
 use Doctrine\Persistence\ObjectManager;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Component\HttpFoundation\Request;
-use Symfony\Component\HttpFoundation\Response;
 
+use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
@@ -25,19 +26,27 @@ class ArticleController extends AbstractController
     #[Route('/articles', name: 'articles')]
     public function index(ArticleRepository $repo, Request $request, PaginatorInterface $paginator): Response
     {
-        $articles = $repo->findBy([], ['createdAt' => 'desc']);
+        $searchArticleForm = $this->createForm(SearchArticleType::class);
+        if ($searchArticleForm->handleRequest($request)->isSubmitted() && $searchArticleForm->isValid()) {
+            $searchData = $searchArticleForm->getData();
+            $articles = $repo->findByCategory($searchData);
+        } else {
+            $articles = $repo->findBy([], ['createdAt' => 'desc']);
+        }
 
         $articles = $paginator->paginate(
             $articles,
             $request->query->getInt('page', 1),
             4
         );
-
+    
         return $this->render('article/index.html.twig', [
             'controller_name' => 'ArticleController',
+            'search_article_form' => $searchArticleForm->createView(),
             'articles' => $articles
         ]);
     }
+
 
     #[Route('/article/{id}', name: 'article_show')]
     public function show(Article $article, Comment $comment = null, Request $request, ObjectManager $manager): Response
