@@ -275,11 +275,11 @@ p.accroche {
     justify-content: center;
 }
 .profile-group {
-    padding: 73px;
+    padding: 80px;
     text-align: center;
 }
 .button-group {
-    margin-top: 50px;
+    margin-top: 60px;
     text-align: center;
     display: block;
 }
@@ -299,5 +299,12 @@ p.accroche {
     }
 }
 
-
 /*END PROFILE */
+
+/* CREATE GROUP */
+
+.create-group {
+    margin-top: 50px;
+}
+
+/* END GROUP */

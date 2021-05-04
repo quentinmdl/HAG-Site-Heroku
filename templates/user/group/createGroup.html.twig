@@ -1,0 +1,31 @@
+{% extends 'user.html.twig' %}
+
+
+
+{% block body %}
+    <div class="row justify-content-md-center" style="padding: 70px 0;">
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success">
+                {{ message }}
+            </div>
+        {% endfor %}
+        <div class="col-md-7 col-xs-12">
+              <p><b>Espace Groupe</b></p>
+            <div class="card-group">
+                <div class="profile-group">
+                    <h3>Commencez par créer votre groupe</h3>
+                    <div class="create-group">
+                        {{ form_start(create_group_form) }}
+                            <div>
+                                {{ form_row(create_group_form, { 'label' : ' ', 'attr' : {'placeholder' : 'Saississez le nom du groupe' }}) }}
+                            </div>
+                            <div class="button-group">
+                                <button id="submit" type="submit" class="allButton">Ajouter un membre</button>
+                            </div>
+                        {{ form_end(create_group_form) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

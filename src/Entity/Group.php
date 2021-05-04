@@ -28,6 +28,11 @@ class Group
     private $name;
 
     /**
+     * @ORM\Column(type="string", length=50)
+     */
+    private $owner;
+
+    /**
      * @Gedmo\Slug(fields={"name"})
      * @ORM\Column(type="string", length=255, unique=true)
      */
@@ -78,6 +83,18 @@ class Group
     public function setName(string $name): self
     {
         $this->name = $name;
+
+        return $this;
+    }
+
+    public function getOwner(): ?string
+    {
+        return $this->owner;
+    }
+
+    public function setOwner(string $owner): self
+    {
+        $this->owner = $owner;
 
         return $this;
     }
