@@ -13,13 +13,14 @@ import 'popper.js';
 import 'bootstrap';
 import 'font-awesome/css/font-awesome.css';
 
-// import 'stripe';
+import  '../images/global/favicon.ico';
+import  '../images/global/AHAG-Banner.webp';
+import  '../images/global/AHAG.webp';
+import  '../images/loginregister/login.webp';
+import  '../images/payment/success.webp';
+import  '../images/payment/error.webp';
+import  '../images/forgotpassword/forgotpassword.webp';
 
-import '../favicon.ico';
-import '../AHAG.png';
-import '../AHAG-Banner.jpg';
-
-// import '../js/session.js';
 // Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
 const $ = require('jquery');
 
