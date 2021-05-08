@@ -1,20 +1,22 @@
 {% extends 'base.html.twig' %}
 
-
 {% block body %}
-<container>
     <div class="check-mail">
-        <div class="justify-content-md-center" style="padding: 70px 0;">
-            <div class="col-xs-12 col-md-5 mx-auto">
-                <div class="text-center">
-                    <p>Un email vient de vous être envoyé contenant un lien pour reinitialiser votre mot de passe.
-                        Ce lien expire dans {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.
-                    </p>
-                    <p>Si vous n'avez pas reçu d'email, veuillez regarder dans vos spams ou <a href="{{ path('app_forgot_password_request') }}">veuillez réassayer</a>.</p>
-                </div>
+        <div class="check-mail-div">
+            <div class="check-mail-img">
+                	<img src="{{ asset('build/images/forgotpassword.webp') }}" width="125" height="auto" class="d-inline-block align-top" alt="image mot de passe oublié">
+            </div>
+            <div class="check-mail-sentence">
+                <p>Un email vient de vous être envoyé contenant un lien pour reinitialiser votre mot de passe.Ce lien expire dans 
+                    {{ resetToken.expirationMessageKey|trans(resetToken.expirationMessageData, 'ResetPasswordBundle') }}.                 
+                </p>
+                <p>Si vous n'avez pas reçu d'email, veuillez regarder dans vos spams ou 
+                    <a href="{{ path('app_forgot_password_request') }}" class="link-orange">
+                        veuillez réassayer
+                    </a>
+                    .
+                </p>
             </div>
         </div>
     </div>
-</container>
-
 {% endblock %}
