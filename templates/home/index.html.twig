@@ -6,51 +6,49 @@
 		<img src="{{ asset('build/images/AHAG-Banner.webp') }}" width="100" height="auto" alt="image du site">
 	</div>
 	<p class="accroche">
-		<b>Home A Game : Un jeu d'aventure hors du commun pour vivre le voyage autrement</b>
+			<b>Home A Game : Un jeu d'aventure hors du commun pour vivre le voyage autrement</b>
 	</p>
-	<div class="home row">
-		<div class="col-xs-12 col-md-8">
-			<div class="col-12">
-				<section class="about">
-					<h2>
-						<b>Qui sommes nous ?</b>
-					</h2>
-					<div>
-						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu ultricies lectus. Proin sagittis leo porta pharetra congue. Vestibulum pulvinar consequat turpis, ut auctor ligula fringilla sed. Nullam vitae leo dapibus, convallis dolor eu, pretium neque. Praesent velit nunc, venenatis eget nisi lacinia, finibus tincidunt libero. Quisque sed ex ipsum. Sed ante tortor, auctor vitae odio nec, feugiat elementum ante. Proin non pellentesque justo, at auctor libero. Donec mi turpis, varius quis nisi vel, posuere ultricies sapien. Morbi eget egestas arcu, sed cursus enim. Curabitur a mollis sapien. Nullam fermentum mollis facilisis. Nam tristique libero elit, in porta leo vulputate ac. Curabitur et rhoncus sapien, a pharetra ex. Nam aliquet nec purus sed aliquam. Nullam sollicitudin lorem nec ultrices malesuada.</p>
-					</div>
-				</section>
+	<div class="home">
+		<div class="home-text">
+			<div class="text-div">
+				<h2>
+					<b>Qui sommes nous ?</b>
+				</h2>
+				<div>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu ultricies lectus. Proin sagittis leo porta pharetra congue. Vestibulum pulvinar consequat turpis, ut auctor ligula fringilla sed. Nullam vitae leo dapibus, convallis dolor eu, pretium neque. Praesent velit nunc, venenatis eget nisi lacinia, finibus tincidunt libero. Quisque sed ex ipsum. Sed ante tortor, auctor vitae odio nec, feugiat elementum ante. Proin non pellentesque justo, at auctor libero. Donec mi turpis, varius quis nisi vel, posuere ultricies sapien. Morbi eget egestas arcu, sed cursus enim. Curabitur a mollis sapien. Nullam fermentum mollis facilisis. Nam tristique libero elit, in porta leo vulputate ac. Curabitur et rhoncus sapien, a pharetra ex. Nam aliquet nec purus sed aliquam. Nullam sollicitudin lorem nec ultrices malesuada.</p>
+				</div>
 			</div>
-			<div class="col-12">
-				<section class="concept">
+			<div class="">
+				<div class="text-div">
 					<h2>
 						<b>Le Concept</b>
 					</h2>
 					<div>
 						<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu ultricies lectus. Proin sagittis leo porta pharetra congue. Vestibulum pulvinar consequat turpis, ut auctor ligula fringilla sed. Nullam vitae leo dapibus, convallis dolor eu, pretium neque. Praesent velit nunc, venenatis eget nisi lacinia, finibus tincidunt libero. Quisque sed ex ipsum. Sed ante tortor, auctor vitae odio nec, feugiat elementum ante. Proin non pellentesque justo, at auctor libero. Donec mi turpis, varius quis nisi vel, posuere ultricies sapien. Morbi eget egestas arcu, sed cursus enim. Curabitur a mollis sapien. Nullam fermentum mollis facilisis. Nam tristique libero elit, in porta leo vulputate ac. Curabitur et rhoncus sapien, a pharetra ex. Nam aliquet nec purus sed aliquam. Nullam sollicitudin lorem nec ultrices malesuada.</p>
 					</div>
-				</section>
+				</div>
 			</div>
 		</div>
-		<aside class="col-xs-12 col-md-4">
-            <div class="scoreboard">
-                <h5>Classement Actuelle (Top 5)</h5>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>Nom</th>
-                            <th>Points</th>
-                        </tr>
-                    </thead>
-                    {% for i in range(0,1) %}
-                        <tbody>
-                            <tr>
-                                <td>Groupe</td>
-                                <td>28</td>
-                            </tr>
-                        </tbody>
-                    {% endfor %}
-                </table>
-            </div>
+		<aside class="home-scoreboard">
+			<div class="scoreboard">
+				<h5>Classement Actuelle (Top 5)</h5>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Nom</th>
+							<th>Points</th>
+						</tr>
+					</thead>
+					{% for i in range(0,1) %}
+						<tbody>
+							<tr>
+								<td>Groupe</td>
+								<td>28</td>
+							</tr>
+						</tbody>
+					{% endfor %}
+				</table>
+			</div>
 		</aside>
 	</div>
 {% endblock %}

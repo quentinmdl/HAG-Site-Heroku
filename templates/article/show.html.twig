@@ -3,7 +3,7 @@
 {% block body %}
 	<container>
 		<div class="justify-content-md-center" style="padding: 70px 0;">
-			<div class="col-xs-12 col-md-7 mx-auto article-show">
+			<div class="col-xs-12 col-md-8 mx-auto article-show">
 				<div class="text-center">
 					<div class="article-show-title">
 						<h2>{{ article.title }}</h2>
@@ -50,11 +50,11 @@
 					{% if app.user %}
 						{{ form_start(commentForm) }}
 							{{ form_row(commentForm.content, { 'label' : 'Commentaire:', 'attr': { placeholder: "Votre commentaire" }}) }}
-							<button type="submit" class="btn btn-dark">Commenter</button>
+							<button type="submit" class="btn-black">Commenter</button>
 						{{ form_end(commentForm) }}
 					{% else %}
 						<p>Veuillez vous connecter afin de commenter cette article</p>
-						<a href="{{ path('app_login') }}" class="btn btn-dark">Connexion</a>
+						<a href="{{ path('app_login') }}" class="btn-black">Connexion</a>
 					{% endif %}
 				</div>
 			</div>

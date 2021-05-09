@@ -1,6 +1,5 @@
 /* GLOBAL */
 
-
 @import url('https://fonts.googleapis.com/css?family=Roboto');
 
 html,body {
@@ -16,18 +15,27 @@ html,body {
 * {
     box-sizing: border-box;
 }
+/*TEXT */
 p{
     font-family: 'Roboto', sans-serif;
     font-size: 16px;
     text-align: justify;
 }
-
 @media screen and (max-width: 1040px) {
     P{
         font-size: 14px;
     }
 }
+p.accroche {
+    padding: 0 20px;
+    margin-top: 50px;
+    margin-bottom: 0px;
+    text-align: center;
+    vertical-align: bottom;
+}
+/* END TEXT */
 
+/* FORM  */
 .form-control {
     border: 1px solid black;
 }
@@ -35,14 +43,14 @@ p{
     border: 1px solid black;
     box-shadow: 3px 3Px 1px black;
 }
+/* END FORM */
 
 .title {
     text-align: center;
     margin-bottom: 30px;
 }
 
-/* MAIN BUTTON */
-
+/* BUTTONS */
 .btn-orange {
     background-color: #e77a34;
     border: none;
@@ -51,14 +59,26 @@ p{
     display: inline-block;
     font-size: 16px;
     border-radius: 12px;
+    text-decoration: none !important;
 }
-
 .btn-orange:hover {
     color: white;
 }
 
-
-/* END MAIN BUTTON */
+.btn-black {
+    background-color: #171717;
+    border: none;
+    color: #fff;
+    padding: 8px 16px;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 5px;
+    text-decoration: none !important;
+}
+.btn-black:hover {
+    color: white;
+}
+/* END BUTTONS */
 
 /* END GLOBAL */
 
@@ -67,7 +87,6 @@ p{
 .navbar {
     background-color: #e77a34;
     padding: 0;
-    height: 77px;
 }
 .navbar-nav li{
     padding: 20px;
@@ -94,25 +113,39 @@ p{
         height: auto;
     }
 }
-
 /* END NAVBAR */
 
 
 /* FOOTER */
-
 .copyright i{
     font-size: 30px;
 } 
-
-
 .copyright i:hover{
     opacity: 0.8;
 } 
+
+#btn-top{
+    display: none; /* Hidden by default */
+    position: fixed; /* Fixed/sticky position */
+    bottom: 20px; /* Place the button at the bottom of the page */
+    right: 30px; /* Place the button 30px from the right */
+    z-index: 99; /* Make sure it does not overlap */
+    border: none; /* Remove borders */
+    outline: none; /* Remove outline */
+    background-color: rgb(56, 56, 56); /* Set a background color */
+    color: white; /* Text color */
+    cursor: pointer; /* Add a mouse pointer on hover */
+    padding: 5px; /* Some padding */
+    border-radius: 10px; /* Rounded corners */
+    font-size: 14px; /* Increase font size */
+}
+#btn-top:hover {
+    background-color: rgba(56, 56, 56, 0.485);
+}
 /* END FOOTER */
 
 
 /* LOGIN & REGISTER */
-
 .login {
     width: 100%;
     height: 100%;
@@ -166,14 +199,6 @@ p{
     width: 100%;
     display: inline-flex;
 }
-
-.side-img{
-    width: 50%; 
-}
-.side-img img{
-    width: 100%;
-    height: 100%;
-}
 .register-div {
     width: 50%;
     height: 100%;
@@ -187,22 +212,16 @@ p{
     width: 460px;
     justify-content: center;
     align-items: center;
-    margin: auto auto;
+    margin: 0 auto;
 }
 .register-form form{
     padding: 20px 10px;
 }
-
-.form-row div{ 
-    margin: 0;
-}
-
 @media screen and (max-width: 1200px) {
     .side-img{
         width: 50%; 
     }
 } 
-
 @media screen and (max-width: 800px) {
     .side-img{
         display: none;
@@ -219,14 +238,12 @@ p{
         margin-bottom: 5px;
     }
     .side-img{
-        width: 50%; 
-    
+        width: 50%;    
     }
     .side-img img{
         width: 50%; 
     }
 }
-
 @media screen and (max-width: 600px) {
     .register-div {
         justify-content:unset;
@@ -236,12 +253,10 @@ p{
         width: 50%; 
     }
 }
-
 /* END LOGIN & REGISTER */
 
 
 /* FORGOT PASSWORD*/
-
 .forgot-password {
     min-height: 67.5vh;
     display: flex;
@@ -262,7 +277,6 @@ p{
 }
 
 /*CHECK MAIL */
-
 .check-mail {
     min-height: 67.5vh;
     display: flex;
@@ -288,7 +302,6 @@ p{
 /*END CHECK MAIL */
 
 /* RESET PASSWORD */
-
 .reset-password {
     min-height: 67.5vh;
     display: flex;
@@ -299,7 +312,6 @@ p{
 .reset-password-btn {
     text-align: center;
 }
-
 /* END RESET PASSWORD*/
 
 
@@ -307,7 +319,6 @@ p{
 
 
 /* HOME */
-
 div.main-banner {
     width: 100%;
     height: auto;
@@ -318,59 +329,53 @@ div.main-banner img{
     background-size: contain;
 }
 
-p.accroche {
-    padding: 30px;
-    text-align: center;
-}
-
 .home {
-    padding: 70px 180px;
+    padding: 50px 180px;
+    display: flex;
+}
+.home-text {
+    width: 70%;
+    padding-right: 30px;
+}
+.home-scoreboard {
+    width: 30%;
 }
 
 @media screen and (max-width: 1240px) {
-    .about {
-        padding: 10px 20px;
-    }
-    .concept {
-        padding: 10px 20px;
-    }
-    .scoreboard {
-        padding: 10px 20px;
-    }
     .home {
-        padding: 0;
+        padding: 50px 70px;
+        display: block;
+        justify-content: center;
+    }
+    .home-text {
+        width: 100%;
+        padding-right: 0px;
+    }
+    .home-scoreboard {
+        width: 100%;
     }
 }
-
-@media screen and (max-width: 840px) {
-    .about {
-        padding: 10px 20px;
-    }
-    .concept {
-        padding: 10px 20px;
-    }
-    .scoreboard {
-        padding: 10px 20px;
-    }
+@media screen and (max-width: 800px) {
     .home {
-        padding: 0;
+        padding: 50px 20px;
     }
-}
 
+}
 /* END HOME */
 
 
-
 /* ARTICLES */
-
+.articles {
+    padding: 20px 10px;
+}
 .search-filter{
-    padding: 20Px;
+    padding: 10Px 0;
 }
 .article-filter {
     display: flex;
 }
 .article {
-    padding: 20px;
+    padding-bottom: 20px;
 }
 .article-img img{
     max-height: auto;
@@ -426,11 +431,9 @@ p.accroche {
     background-color: #e77a34;
     border: solid 1px #e77a34;
 }
-
 /* END ARTICLES */
 
 /* SHOW ARTICLE */
-
 .article-show {
     -webkit-box-shadow: 0px 0px 25px 9px rgba(0,0,0,0.39); 
     box-shadow: 0px 0px 25px 9px rgba(0,0,0,0.39);
@@ -471,7 +474,6 @@ p.accroche {
     margin-bottom: 50px;
 } 
 
-
 .commentaires {
     padding: 0;
     margin: 0;
@@ -483,9 +485,53 @@ p.accroche {
 .comment-show {
     word-break: break-all;
 }
-
-
 /* END ARTICLE */
+
+
+/* PLAY */
+.play {
+    padding: 50px 500px;
+}
+.play-div {
+    width: 100%;
+}
+.play-btn {
+    text-align: center;
+}
+@media screen and (max-width: 1600px) {
+    .play {
+        padding: 50px 70px;
+    }
+}
+@media screen and (max-width: 1240px) {
+    .play {
+        padding: 50px 70px;
+    }
+}
+@media screen and (max-width: 800px) {
+    .play {
+        padding: 50px 20px;
+    }
+
+}
+/* END PLAY */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

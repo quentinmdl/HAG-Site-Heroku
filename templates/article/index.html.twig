@@ -2,34 +2,30 @@
 
 {% block body %}
     <div class="articles">
-        <div class="articles-div justify-content-md-center">
-			<div class="col-7 mx-auto">
+        <div class="articles-div col-xs-12 col-md-8 mx-auto">
 				<div class="title">
 					<h2>Article(s) :</h2>
 				</div>
 				<div>
-					<p>Il y a                      
-						{{ articles.getTotalItemCount }}
-						articles à ce jour                 
-					</p>
+					<p>Il y a {{ articles.getTotalItemCount }} articles à ce jour</p>
 				</div>
 				{{ form_start(search_article_form) }}
-				<div class="search-filter">
-					<p>Filtre</p>
-					<div class="article-filter">
-						{{ form_widget(search_article_form, { 'label' : '' }) }}
-						<button class="btn btn-lg btn-success" type="submit">Trier</button>
+					<div class="search-filter">
+						<p>Filtre</p>
+						<div class="article-filter">
+							{{ form_widget(search_article_form, { 'label' : '' }) }}
+							<button class="btn-orange" type="submit">Trier</button>
+						</div>
 					</div>
-				</div>
 				{{ form_end(search_article_form) }}
 				{% for article in articles %}
 					<article class="article">
 						<div class="card">
 							<div class="row">
-								<div class="col-12 col-md-4 mx-auto article-img">
-									<img class="card-img" src="{{ vich_uploader_asset(article, 'imageFile') }}" width="200" height="200" alt="img article"></div>
+								<div class="col-xs-12 col-md-4 mx-auto article-img">
+									<img class="card-img" src="{{ vich_uploader_asset(article, 'imageFile') }}" width="200" height="200" alt="img article">
 								</div>
-								<div class="col-12 col-md-8 mx-auto article-content">
+								<div class="col-xs-12 col-md-8 mx-auto article-content">
 									<h5 class="card-title">
 										{{ article.title }}
 									</h5>
@@ -37,23 +33,22 @@
 										{{ article.content|slice(5, 200) }}
 									</p>
 								</div>
-								<div class="card-footer article-footer">
+							</div>
+							<div class="card-footer article-footer">
 									<small class="text-muted">
 										Publiée le {{ article.createdAt | date('d/m/Y') }} à {{ article.createdAt | date('h:i') }}
-										dans la catégorie :	{{ article.category.title }}
+										<br>Catégorie :	{{ article.category.title }}
 									</small>
 									<a class="article-read" href="{{ path('article_show', {'id':article.id} ) }}">
 										Lire l'article									
 									</a>
 								</div>
-							</div>
 						</div>
 					</article>
 				{% endfor %}
 				<div class="pagination">
 					{{ knp_pagination_render(articles) }}
 				</div>
-            </div>
         </div>
     </div>
 {% endblock %}

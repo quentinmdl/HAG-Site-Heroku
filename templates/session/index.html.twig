@@ -1,26 +1,39 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <container class="session">
-        <div class="justify-content-md-center" style="padding: 70px 0;">
-            <div class="col-xs-12 col-md-9 mx-auto">
-                <div class="text-center">
-                    <h2>Jouer</h2>
-                </div>
+    <div class="main-banner">
+		<img src="{{ asset('build/images/AHAG-Banner.webp') }}" width="100" height="auto" alt="image du site">
+	</div>
+    <p class="accroche">
+	    <b>Découvrez comment ce déroule une session</b>
+	</p>
+	<div class="play">
+		<div class="play-div">
+			<div class="text-div">
+				<h2>
+					<b>Règles</b>
+				</h2>
+				<div>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu ultricies lectus. Proin sagittis leo porta pharetra congue. Vestibulum pulvinar consequat turpis, ut auctor ligula fringilla sed. Nullam vitae leo dapibus, convallis dolor eu, pretium neque. Praesent velit nunc, venenatis eget nisi lacinia, finibus tincidunt libero. Quisque sed ex ipsum. Sed ante tortor, auctor vitae odio nec, feugiat elementum ante. Proin non pellentesque justo, at auctor libero. Donec mi turpis, varius quis nisi vel, posuere ultricies sapien. Morbi eget egestas arcu, sed cursus enim. Curabitur a mollis sapien. Nullam fermentum mollis facilisis. Nam tristique libero elit, in porta leo vulputate ac. Curabitur et rhoncus sapien, a pharetra ex. Nam aliquet nec purus sed aliquam. Nullam sollicitudin lorem nec ultrices malesuada.</p>
+				</div>
+			</div>
+            <div class="text-div">
+                <h2><b>Principes</b></h2>
                 <div>
-                    <h2>Règles</h2>
-                </div>
-                <div>
-                    <h2>Principes</h2>
-                </div>
-                <div>
-                    <h2>Déroulement</h2>
-                    etc etc
-                </div>
-                <div class="text-center">
-                    <a class="btn btn-primary"  href="{{ path('play_show') }}">Session</a>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu ultricies lectus. Proin sagittis leo porta pharetra congue. Vestibulum pulvinar consequat turpis, ut auctor ligula fringilla sed. Nullam vitae leo dapibus, convallis dolor eu, pretium neque. Praesent velit nunc, venenatis eget nisi lacinia, finibus tincidunt libero. Quisque sed ex ipsum. Sed ante tortor, auctor vitae odio nec, feugiat elementum ante. Proin non pellentesque justo, at auctor libero. Donec mi turpis, varius quis nisi vel, posuere ultricies sapien. Morbi eget egestas arcu, sed cursus enim. Curabitur a mollis sapien. Nullam fermentum mollis facilisis. Nam tristique libero elit, in porta leo vulputate ac. Curabitur et rhoncus sapien, a pharetra ex. Nam aliquet nec purus sed aliquam. Nullam sollicitudin lorem nec ultrices malesuada.</p>
                 </div>
             </div>
+            <div class="text-div">
+				<h2>
+					<b>Déroulement</b>
+				</h2>
+				<div>
+					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu ultricies lectus. Proin sagittis leo porta pharetra congue. Vestibulum pulvinar consequat turpis, ut auctor ligula fringilla sed. Nullam vitae leo dapibus, convallis dolor eu, pretium neque. Praesent velit nunc, venenatis eget nisi lacinia, finibus tincidunt libero. Quisque sed ex ipsum. Sed ante tortor, auctor vitae odio nec, feugiat elementum ante. Proin non pellentesque justo, at auctor libero. Donec mi turpis, varius quis nisi vel, posuere ultricies sapien. Morbi eget egestas arcu, sed cursus enim. Curabitur a mollis sapien. Nullam fermentum mollis facilisis. Nam tristique libero elit, in porta leo vulputate ac. Curabitur et rhoncus sapien, a pharetra ex. Nam aliquet nec purus sed aliquam. Nullam sollicitudin lorem nec ultrices malesuada.</p>
+				</div>
+			</div>
+		</div>
+        <div class="play-btn">
+            <a class="btn-orange" href="{{ path('play_show') }}">Session</a>
         </div>
-    </container>
+	</div>
 {% endblock %}
