@@ -369,10 +369,12 @@ div.main-banner img{
     padding: 20px 10px;
 }
 .search-filter{
-    padding: 10Px 0;
-}
-.article-filter {
+    margin-bottom: 50px;
     display: flex;
+}
+.form-filter {
+    padding: 0;
+    margin: 0;
 }
 .article {
     padding-bottom: 20px;
@@ -435,10 +437,16 @@ div.main-banner img{
 
 /* SHOW ARTICLE */
 .article-show {
+    padding: 70px 0;
+}
+.article-show-div{
     -webkit-box-shadow: 0px 0px 25px 9px rgba(0,0,0,0.39); 
     box-shadow: 0px 0px 25px 9px rgba(0,0,0,0.39);
     width: 100%;
     padding: 30px 50px;
+}
+.article-show-content {
+    text-align: center;
 }
 .article-show-title {
     width: 100%;
@@ -451,7 +459,6 @@ div.main-banner img{
     height:400Px;
     background-size: contain;
     margin-bottom: 50px;
-
 }
 .article-show-img img{
     max-width:100%;
@@ -512,8 +519,86 @@ div.main-banner img{
     .play {
         padding: 50px 20px;
     }
+}
+
+/* SHOW SESSION */
+.session-show {
+    padding: 165px 0;
+}
+.session-show-div{
+    -webkit-box-shadow: 0px 0px 25px 9px rgba(0,0,0,0.39); 
+    box-shadow: 0px 0px 25px 9px rgba(0,0,0,0.39);
+    width: 100%;
+    padding: 30px 50px;
+}
+.session-show-content {
+    text-align: center;
+    border: none;
+}
+.session-show-title {
+    width: 100%;
+    height: auto;
+    margin-bottom: 30px;
+    word-wrap: break-word;
+}  
+.session-show-img img{
+    width:100%;
+    height:400Px;
+    background-size: contain;
+    margin-bottom: 50px;
 
 }
+.session-show-img img{
+    max-width:100%;
+    min-height:100%;
+    object-fit: contain;
+    margin-bottom: 50px;
+}
+.session-show-content  {
+    margin-bottom: 50px;
+}
+.session-show-content {
+    margin: auto auto;
+}
+.session-show-content  p{
+    text-align: center;
+}
+.session-show-content p{
+    word-wrap: break-word;
+}
+.session-show-details p{
+    text-align: center;
+    margin-bottom: 50px;
+}
+.session-show-btn {
+    text-align: center;
+}
+.session-show-btn p{
+    text-align: center;
+}
+/* END SHOW SESSION */
+
+
+/* SESSION PAYMENT MS*/
+.session-payment {
+    padding: 300px 10px;
+}
+.session-payment-div {
+    text-align: center;
+}
+.session-payment-div img {
+    margin-bottom: 15px;
+}
+@media screen and (max-width: 800px) {
+    .session-payment {
+        padding: 150px 10px;
+    }
+    .session-payment-div img {
+        width: 100px;
+    }
+}
+/* END SESSION PAYMENT */
+
 /* END PLAY */
 
 

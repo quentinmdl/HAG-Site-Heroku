@@ -10,12 +10,15 @@
 					<p>Il y a {{ articles.getTotalItemCount }} articles à ce jour</p>
 				</div>
 				{{ form_start(search_article_form) }}
+					<p>Filtre</p>
 					<div class="search-filter">
-						<p>Filtre</p>
-						<div class="article-filter">
-							{{ form_widget(search_article_form, { 'label' : '' }) }}
-							<button class="btn-orange" type="submit">Trier</button>
-						</div>
+						{# {{ form(search_article_form, { 'label' : ' ' }) }} #}
+						{% block form_row -%}
+							<div class="form-group form-filter">
+								{{- form_widget(search_article_form) -}}
+							</div>
+						{%- endblock form_row %}
+						<button class="btn-orange" type="submit">Trier</button>
 					</div>
 				{{ form_end(search_article_form) }}
 				{% for article in articles %}
@@ -26,9 +29,9 @@
 									<img class="card-img" src="{{ vich_uploader_asset(article, 'imageFile') }}" width="200" height="200" alt="img article">
 								</div>
 								<div class="col-xs-12 col-md-8 mx-auto article-content">
-									<h5 class="card-title">
+									<h4 class="card-title">
 										{{ article.title }}
-									</h5>
+									</h4>
 									<p class="card-text">
 										{{ article.content|slice(5, 200) }}
 									</p>

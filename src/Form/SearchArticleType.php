@@ -17,6 +17,9 @@ class SearchArticleType extends AbstractType
                 'class' => Category::class,
                 'choice_label' => 'title',
                 'label'   => false,
+                'row_attr' => [
+                    'class' => 'form-filter'
+                ],
             ]);
     }
 
