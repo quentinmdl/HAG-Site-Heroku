@@ -88,13 +88,13 @@ p.accroche {
     background-color: #e77a34;
     padding: 0;
 }
-.navbar-nav li{
-    padding: 20px;
+.header-navbar li{
+    padding: 20px 30px;
 }
-.navbar-nav a{
+.header-navbar a{
     color: black;
 }
-.navbar-nav a:hover{
+.header-navbar a:hover{
     color: white;
 }
 
@@ -618,16 +618,32 @@ div.main-banner img{
 
 
 
-
-
-
+/* MANAGE ACCOUNT */
+.profile-navbar {
+    background-color: blanchedalmond;
+    height: 100%;
+}
+.profile-navbar a{
+    padding: 30px 0;
+    color: black;
+    justify-content: space-around;
+}
+.profile-navbar-links {
+    width: 100%;
+    padding: 0 20px;
+}
+/* END MANAGE ACCOUNT */
 
 /* PROFILE USER*/
-
 .profile-user {
     border: 1px solid rgba(0, 0, 0, 0.125);
     text-align: center;
-    padding: 30px;
+    padding: 25px;
+}
+.informations-user {
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    text-align: center;
+    padding: 25px;
 }
 
 .profile-user-card-footer {
@@ -639,17 +655,32 @@ div.main-banner img{
     padding: 5px; 
     margin: 0;   
 }
-@media screen and (min-width: 1400px) {
+.profile-content {
+    padding: 110px 0;
+}
+@media screen and (min-width: 1340px) {
     .profile-content {
-        padding: 120Px 0;
+        padding: 180px 0;
     }
 }
 @media screen and (max-width: 840px) {
     .profile-content {
-        padding: 0;
+        padding: 70px 0;
+    }
+    .profile-user {
+        margin-bottom: 30px;
     }
 }
 
+/* EDIT PROFIL */
+.edit-profile-title {
+    text-align: center;
+    margin-bottom: 30px;
+}
+.edit-profile-btn {
+    text-align: center;
+}
+/* END EDIT PROFIL */
 /* END PROFILE */
 
 

@@ -3,13 +3,13 @@
 
 
 {% block body %}
-    <div class="row justify-content-md-center" style="padding: 70px 0;">
+    <div class="profile row justify-content-md-center">
         {% for message in app.flashes('success') %}
             <div class="alert alert-success">
                 {{ message }}
             </div>
         {% endfor %}
-        <div class="col-md-3 col-xs-12">
+        <div class="col-md-3 col-xs-12 profile-div">
             <p><b>Profil</b></p>
             <div class="profile-user">
                 <div class="profile-user-card">
@@ -45,7 +45,7 @@
         </div>
         <div class="col-md-6 col-xs-12">
           <p><b>Vos Informations</b></p>
-            <div class="profile-user">
+            <div class="informations-user">
                 <div class="profile-user-informations">
                     <div class="row mx-auto">
                         <div>
@@ -66,7 +66,7 @@
                             <p>Mdp : ••••••... <br></p>
                         </div>
                         <div>
-                            <a href="{{ path('app_password_update')}}" class="btn btn-primary">Modifier</a>
+                            <a href="{{ path('app_password_update')}}" class="btn-orange">Modifier</a>
                         </div>
                     </div>
                     <div>
@@ -83,7 +83,7 @@
                     <div>
                         <p>Téléphone : {{ app.user.phone }}</p>
                     </div>                
-                    <a href="{{ path('app_user_update')}}" class="btn btn-primary">Mettre à jour</a>
+                    <a href="{{ path('app_user_update')}}" class="btn-orange">Mettre à jour</a>
                 </div>
             </div>
         </div>
