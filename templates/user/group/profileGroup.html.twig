@@ -3,22 +3,20 @@
 
 
 {% block body %}
-    <div class="row justify-content-md-center" style="padding: 70px 0;">
+    <div class="profile-group">
         {% for message in app.flashes('success') %}
             <div class="alert alert-success">
                 {{ message }}
             </div>
         {% endfor %}
-        <div class="col-md-7 col-xs-12">
-              <p><b>Espace Groupe</b></p>
-            <div class="card-group">
-                <div class="profile-group">
-                    <h3>Vous faites désormais partie de la session actuelle</h3>
-                    <div class="button-group">
-                        <a class="btn btn-dark" href="{{ path('app_create_group') }}">Créer un groupe</a>
-                        <p class="text-center">ou</p>
-                        <a class="btn btn-dark" href="{{ path('app_create_group') }}">Rejoindre un groupe</a>
-                    </div>
+        <div class="col-md-6 col-xs-12 mx-auto">
+            <p><b>Espace Groupe</b></p>
+            <div class="profile-group-div">
+                <h3>Vous faites désormais partie de la session actuelle, rejoingnez l'aventure !</h3>
+                <div class="profile-group-btn">
+                    <a class="btn-black" href="{{ path('app_create_group') }}">Créer un groupe</a>
+                    <p>ou</p>
+                    <a class="btn-black" href="{{ path('app_create_group') }}">Rejoindre un groupe</a>
                 </div>
             </div>
         </div>

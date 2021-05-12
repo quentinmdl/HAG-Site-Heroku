@@ -78,8 +78,6 @@ class Challenge
      */
     private $session;
 
-
-
     /**
      * @ORM\ManyToMany(targetEntity=Group::class, mappedBy="challenge")
      */

@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Group;
 use App\Form\GroupType;
+use App\Repository\UserRepository;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -32,9 +33,10 @@ class GroupController extends AbstractController
         if ($createGroupForm->isSubmitted() && $createGroupForm->isValid()) {
             $group->setOwner($user->getUsername());
             $group->setCreatedAt(new \DateTime('Europe/Monaco'));
-
             $manager->persist($group);
             $manager->flush();
+
+            return $this->redirectToRoute('app_user_group');
         }
         return $this->render('user/group/createGroup.html.twig', [
             'create_group_form' => $createGroupForm->createView()
@@ -42,7 +44,7 @@ class GroupController extends AbstractController
     }
 
 
-    #[Route('/profil/groupe/{', name: 'app_show_group')]
+    #[Route('/profil/groupe/', name: 'app_show_group')]
     public function show(): Response
     {
         return $this->render('user/group/showGroup.html.twig', [

@@ -32,8 +32,16 @@
 				</div>
 			</div>
 		</div>
-        <div class="play-btn">
-            <a class="btn-orange" href="{{ path('play_show') }}">Session</a>
-        </div>
+		{% if sessions is empty %}
+			<div class="play-btn">
+				<button class="btn-black">Pas de session</button>
+			</div>
+		{% else %}
+			{% for session in sessions|slice(0,1) %}
+					<div class="play-btn">
+						<a class="btn-orange" href="{{ path('play_show', {'slug':session.slug} )  }}">Session</a>
+					</div>
+			{% endfor %}
+		{% endif %}
 	</div>
 {% endblock %}

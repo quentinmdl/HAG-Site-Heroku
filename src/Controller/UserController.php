@@ -103,9 +103,9 @@ class UserController extends AbstractController
     }
 
    
-    #[Route('/profil/session', name: 'app_user_session')]
-    public function sessionProfile(): Response
-    {
-        return $this->render('user/session/profileSession.html.twig');
-    }
+    // #[Route('/profil/session-défis', name: 'app_user_session')]
+    // public function sessionProfile(): Response
+    // {
+    //     return $this->render('user/session/profileSession.html.twig');
+    // }
 }

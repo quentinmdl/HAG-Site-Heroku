@@ -14,7 +14,10 @@ class GroupType extends AbstractType
     {
         $builder
             ->add('name', TextType::class, [
-                'label'   => false
+                'label'   => false,
+                'attr' => array(
+                    'placeholder' => 'Saississez le nom du groupe'
+                )
             ]);
     }
 

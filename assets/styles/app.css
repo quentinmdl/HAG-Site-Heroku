@@ -55,7 +55,7 @@ p.accroche {
     background-color: #e77a34;
     border: none;
     color: #323031;
-    padding: 8px 16px;
+    padding: 7px 14px;
     display: inline-block;
     font-size: 16px;
     border-radius: 12px;
@@ -66,10 +66,10 @@ p.accroche {
 }
 
 .btn-black {
-    background-color: #171717;
+    background-color: #171717e4;
     border: none;
     color: #fff;
-    padding: 8px 16px;
+    padding: 7px 14px;
     display: inline-block;
     font-size: 16px;
     border-radius: 5px;
@@ -89,7 +89,7 @@ p.accroche {
     padding: 0;
 }
 .header-navbar li{
-    padding: 20px 30px;
+    padding: 20px 20px;
 }
 .header-navbar a{
     color: black;
@@ -379,21 +379,33 @@ div.main-banner img{
 .article {
     padding-bottom: 20px;
 }
+.article-img {
+    width: 100%;
+    padding: 0;
+}
 .article-img img{
     max-height: auto;
     width: 100%;
-    max-width: auto;
-    object-fit:contain;
+    max-width: 100%;
+    object-fit:cover;
 }
 .article-content {
+    text-align: center;
     margin: auto auto;
+    padding: 15px 15px;
+}
+.article-content p{
+    text-align: center;
+
 }
 .article-footer {
     display: flex;
     justify-content: space-around;
 }
+
 .article-read{
     color: black;
+    margin: auto auto;
 }
 .article-read:hover {
     color: black;
@@ -443,54 +455,57 @@ div.main-banner img{
     -webkit-box-shadow: 0px 0px 25px 9px rgba(0,0,0,0.39); 
     box-shadow: 0px 0px 25px 9px rgba(0,0,0,0.39);
     width: 100%;
-    padding: 30px 50px;
+    padding: 50px 0;
 }
 .article-show-content {
     text-align: center;
+    padding: 0;
 }
 .article-show-title {
     width: 100%;
     height: auto;
     margin-bottom: 30px;
     word-wrap: break-word;
+    padding: 0 20px;
 }  
+.article-show-img{
+    margin-bottom: 50px;
+    height: 350px;
+    width: 100%;
+}
 .article-show-img img{
     width:100%;
-    height:400Px;
-    background-size: contain;
-    margin-bottom: 50px;
+    height:100%;
+    object-fit:cover;
 }
-.article-show-img img{
-    max-width:100%;
-    min-height:100%;
-    object-fit: contain;
+.article-show-description  {
     margin-bottom: 50px;
-
-}
-.article-show-content  {
-    margin-bottom: 50px;
+    padding: 0 20px;
 }
 .article-show-content  p{
     text-align: center;
-}
-.article-show-content p{
     word-wrap: break-word;
 }
-.article-show-details p{
+.article-show-details {
+    padding: 0 20px;
     text-align: center;
-    margin-bottom: 50px;
-} 
+}
 
 .commentaires {
-    padding: 0;
-    margin: 0;
+    margin-top: 50px;
+    padding: 0 20px;
 }
 .comment{
     margin-bottom: 20px;
 }
-
 .comment-show {
     word-break: break-all;
+}
+
+@media screen and (max-width: 840px) {
+    .article-show {
+        padding: 0 0;
+    }
 }
 /* END ARTICLE */
 
@@ -624,13 +639,21 @@ div.main-banner img{
     height: 100%;
 }
 .profile-navbar a{
-    padding: 30px 0;
+    padding: 40px 0;
     color: black;
     justify-content: space-around;
 }
 .profile-navbar-links {
     width: 100%;
     padding: 0 20px;
+}
+
+@media screen and (max-width: 840px) {
+    .profile-navbar a{
+        padding: 20px 0;
+        color: black;
+        justify-content: space-around;
+    }
 }
 /* END MANAGE ACCOUNT */
 
@@ -660,7 +683,7 @@ div.main-banner img{
 }
 @media screen and (min-width: 1340px) {
     .profile-content {
-        padding: 180px 0;
+        padding: 200px 0;
     }
 }
 @media screen and (max-width: 840px) {
@@ -681,46 +704,137 @@ div.main-banner img{
     text-align: center;
 }
 /* END EDIT PROFIL */
+
 /* END PROFILE */
 
 
 /* GROUP PROFILE */
-.card-group {
-    border: 1px solid rgba(0, 0, 0, 0.125);
-    display: flex;
-    justify-content: center;
-}
 .profile-group {
-    padding: 80px;
     text-align: center;
 }
-.button-group {
-    margin-top: 60px;
+.profile-group-div{
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    padding: 50px;
+    justify-content: center;
+}
+.profile-group-btn{
+    margin-top: 50px;
     text-align: center;
     display: block;
 }
-.button-group p {
+.profile-group-btn p{
     margin: 0;
+    text-align: center;
 }
-.button-group button{
+.profile-group-btn a{
     padding: 10px;
 }
-
-@media screen and (max-width: 840px) {
-    .profile-group {
-        padding: 20px;
-    }
-    .button-group{
-        padding: 0 50px;
-    }
-}
-
 /*END PROFILE */
 
 /* CREATE GROUP */
 
-.create-group {
+.profile-group-create h3{
+    text-align: center;
+}
+.profile-group-create-div{
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    padding: 50px;
+}
+.profile-group-create-form {
     margin-top: 50px;
 }
+.profile-group-create-btn{
+    margin-top: 50px;
+    text-align: center;
+    display: block;
+}
+/* END CREATE GROUP */
 
-/* END GROUP */
+
+
+/* END GROUP PROFILE */
+
+
+
+/* SESSION & CHALLENGES PROFILE */
+.profile-session {
+    text-align: center;
+}
+.profile-session-div{
+    border-top: 1px solid rgba(0, 0, 0, 0.125);
+    padding: 30px 10px;
+    justify-content: center;
+}
+.profile-session-div h3 {
+    margin-bottom: 30px;
+}
+.card-session-challenge {
+    margin: 10px;
+    padding: 0;
+}
+.card-session-challenge img {
+    max-height: auto;
+    width: 100%;
+    max-width: auto;
+    object-fit:contain;
+}
+.card-session-challenge-body {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    word-break: break-all;
+
+}
+
+/* SHOW CHALLENGE */
+
+/* END SHOW CHALLENGE */
+.challenge-show {
+    padding: 70px 0;
+}
+.challenge-show-div{
+    -webkit-box-shadow: 0px 0px 25px 9px rgba(0,0,0,0.39); 
+    box-shadow: 0px 0px 25px 9px rgba(0,0,0,0.39);
+    width: 100%;
+    padding: 50px 0;
+}
+.challenge-show-content {
+    text-align: center;
+    padding: 0;
+}
+.challenge-show-title {
+    width: 100%;
+    height: auto;
+    margin-bottom: 30px;
+    word-wrap: break-word;
+    padding: 0 20px;
+} 
+.challenge-show-img{
+    margin-bottom: 50px;
+    height: 300px;
+    width: 100%;
+}
+.challenge-show-img img{
+    width:100%;
+    height:100%;
+    object-fit:contain;
+}
+.challenge-show-description  {
+    margin-bottom: 50px;
+    padding: 0 20px;
+}
+.challenge-show-content  p{
+    text-align: center;
+    word-wrap: break-word;
+}
+.challenge-show-details{
+    padding: 0 20px;
+    text-align: center;
+}
+@media screen and (max-width: 840px) {
+    .challenge-show {
+        padding: 0 0;
+    }
+}
+/* END SESSION PROFILE */

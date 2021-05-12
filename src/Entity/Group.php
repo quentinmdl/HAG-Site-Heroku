@@ -2,16 +2,19 @@
 
 namespace App\Entity;
 
-use App\Repository\GroupRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
-
+use App\Repository\GroupRepository;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Doctrine\Common\Collections\Collection;
+
+use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
  * @ORM\Entity(repositoryClass=GroupRepository::class)
  * @ORM\Table(name="`group`")
+ * @UniqueEntity(fields={"name"}, message="Ce nom est déjà utilisé !")
  */
 class Group
 {
@@ -24,6 +27,7 @@ class Group
 
     /**
      * @ORM\Column(type="string", length=30)
+     * @Assert\Length(min="10", minMessage="Le nom doit comporter au minimum 10 caractères")
      */
     private $name;
 
@@ -46,7 +50,7 @@ class Group
     /**
      * @ORM\Column(type="integer")
      */
-    private $score;
+    private $score = 0;
 
     /**
      * @ORM\ManyToMany(targetEntity=Challenge::class, inversedBy="groups")
@@ -68,6 +72,7 @@ class Group
     {
         $this->challenge = new ArrayCollection();
         $this->setCreatedAt(new \DateTime('Europe/Monaco'));
+        $this->setState(array('Ouvert'));
     }
 
     public function getId(): ?int

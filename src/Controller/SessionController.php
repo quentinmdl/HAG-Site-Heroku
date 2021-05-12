@@ -16,17 +16,18 @@ class SessionController extends AbstractController
     #[Route('/jouer', name: 'play')]
     public function index(SessionRepository $repo): Response
     {
+        $sessions = $repo->findBy([], ['createdAt' => 'desc']);
+        
         return $this->render('session/index.html.twig', [
             'controller_name' => 'SessionController',
+            'sessions' => $sessions
         ]);
     }
 
 
-    #[Route('/session', name: 'play_show')]
-    public function show(SessionRepository $repo, Request $request): Response
+    #[Route('/session/{slug}', name: 'play_show')]
+    public function show(Session $session, SessionRepository $repo, Request $request): Response
     {
-        $session = $repo->findOneBy([], ['id' => 'desc']);
-
         return $this->render('session/show.html.twig', [
             'controller_name' => 'SessionController',
             'session' => $session

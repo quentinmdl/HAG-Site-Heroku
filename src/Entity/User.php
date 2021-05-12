@@ -5,12 +5,13 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
 
+use Doctrine\ORM\Mapping\JoinColumn;
+use Symfony\Component\HttpFoundation\File\File;
+use Vich\UploaderBundle\Mapping\Annotation as Vich;
+
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-
-use Vich\UploaderBundle\Mapping\Annotation as Vich;
-use Symfony\Component\HttpFoundation\File\File;
 
 /**
  * @ORM\Entity(repositoryClass=UserRepository::class)
@@ -126,7 +127,8 @@ class User implements UserInterface
     private $resetToken;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Group::class, inversedBy="user")
+     * @ORM\ManyToOne(targetEntity=Group::class, inversedBy="id")
+     * @ORM\JoinColumn(name="groups_id", referencedColumnName="id")
      */
     private $groups;
 
@@ -144,8 +146,6 @@ class User implements UserInterface
     * @ORM\Column(type="datetime", nullable=true))
     */
     private $updatedAt;
-
-
 
 
     public function getId(): ?int

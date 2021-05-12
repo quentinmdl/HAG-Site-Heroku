@@ -42,7 +42,7 @@
 										Publiée le {{ article.createdAt | date('d/m/Y') }} à {{ article.createdAt | date('h:i') }}
 										<br>Catégorie :	{{ article.category.title }}
 									</small>
-									<a class="article-read" href="{{ path('article_show', {'id':article.id} ) }}">
+									<a class="article-read" href="{{ path('article_show', {'slug':article.slug} ) }}">
 										Lire l'article									
 									</a>
 								</div>

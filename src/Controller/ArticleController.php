@@ -48,7 +48,7 @@ class ArticleController extends AbstractController
     }
 
 
-    #[Route('/article/{id}', name: 'article_show')]
+    #[Route('/article/{slug}', name: 'article_show')]
     public function show(Article $article, Comment $comment = null, Request $request, ObjectManager $manager): Response
     {
         $comment = new Comment();
@@ -66,7 +66,7 @@ class ArticleController extends AbstractController
             $manager->persist($comment);
             $manager->flush();
 
-            return $this->redirectToRoute('article_show', ['id' => $article->getId()]);
+            return $this->redirectToRoute('article_show', ['slug' => $article->getSlug()]);
         }
 
         return $this->render('article/show.html.twig', [

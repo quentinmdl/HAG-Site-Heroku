@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ChallengeController!{% endblock %}
+
+{% block body %}
+    <div class="challenge-show">
+		<div class="col-xs-12 col-md-5 mx-auto challenge-show-div">
+			<div class="challenge-show-content">
+				<div class="challenge-show-title">
+					<h2>{{ challenge.name }}</h2>
+				</div>
+				<div class="challenge-show-img">
+					<img src="{{ vich_uploader_asset(challenge, 'imageFile') }}" alt="img article">
+				</div>
+				<div class="challenge-show-description">
+					<p>{{ challenge.description }}</p>
+				</div>
+				<div class="challenge-show-details">
+					<p>Points : {{challenge.point}}</p>
+                    <p>Lieu : {{challenge.location}}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}
