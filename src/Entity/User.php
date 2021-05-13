@@ -3,12 +3,12 @@
 namespace App\Entity;
 
 use App\Entity\User;
-use Doctrine\ORM\Mapping as ORM;
 
+use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping\JoinColumn;
-use Symfony\Component\Serializer\Serializer;
 
+use Symfony\Component\Serializer\Serializer;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -129,11 +129,10 @@ class User implements UserInterface
     private $resetToken;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Group::class, inversedBy="id")
-     * @ORM\JoinColumn(name="groups_id", referencedColumnName="id")
+     * @ORM\ManyToOne(targetEntity=Group::class, inversedBy="users")
      */
     private $groups;
-
+    
     /**
      * @ORM\Column(type="boolean")
      */

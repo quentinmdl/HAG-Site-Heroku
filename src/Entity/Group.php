@@ -2,13 +2,14 @@
 
 namespace App\Entity;
 
+use App\Entity\User;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\GroupRepository;
 use Gedmo\Mapping\Annotation as Gedmo;
-use Doctrine\Common\Collections\Collection;
 
-use Symfony\Component\Validator\Constraints as Assert;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 
 /**
@@ -53,9 +54,23 @@ class Group
     private $score = 0;
 
     /**
-     * @ORM\ManyToMany(targetEntity=Challenge::class, inversedBy="groups")
+     *
+     * @ORM\ManyToMany(targetEntity=Challenge::class, inversedBy="group")
      */
     private $challenge;
+
+    /**
+    * @ORM\OneToMany(targetEntity=User::class, mappedBy="groups", orphanRemoval=true)
+    * @ORM\JoinColumn(nullable=false)
+    */
+    private $users;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=Session::class, inversedBy="groups")
+     * @ORM\JoinColumn(nullable=false)
+     * @Assert\NotBlank( message ="Vous devez choisir une session");
+     */
+    private $session;
 
     /**
      * @ORM\Column(type="datetime")
@@ -165,6 +180,44 @@ class Group
     public function removeChallenge(Challenge $challenge): self
     {
         $this->challenge->removeElement($challenge);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|User[]
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(User $user): self
+    {
+        if (!$this->users->contains($user)) {
+            $this->users[] = $user;
+            $user->setGroups($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): self
+    {
+        $this->users->removeElement($user);
+
+        return $this;
+    }
+
+
+    public function getSession(): ?Session
+    {
+        return $this->session;
+    }
+
+    public function setSession(?Session $session): self
+    {
+        $this->session = $session;
 
         return $this;
     }

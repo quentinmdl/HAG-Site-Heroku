@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
 use App\Entity\Group;
 use App\Form\GroupType;
 use App\Repository\UserRepository;
@@ -22,19 +23,26 @@ class GroupController extends AbstractController
     }
 
     #[Route('/profil/groupe/création', name: 'app_create_group')]
-    public function create(Group $group = null, Request $request, ObjectManager $manager): Response
+    public function create(User $user = null, Group $group = null, Request $request, ObjectManager $manager): Response
     {
         $group = new Group();
+        $user = $this->getUser();
         $createGroupForm = $this->createForm(GroupType::class, $group);
-        $user = $this->get('security.token_storage')->getToken()->getUser();
-
+        // $user = $this->get('security.token_storage')->getToken()->getUser();
+        $groupId = $group->getId();
         $createGroupForm->handleRequest($request);
 
         if ($createGroupForm->isSubmitted() && $createGroupForm->isValid()) {
             $group->setOwner($user->getUsername());
+            $user->setGroups($groupId);
             $group->setCreatedAt(new \DateTime('Europe/Monaco'));
             $manager->persist($group);
             $manager->flush();
+
+            $this->addFlash(
+                'success',
+                'Groupe crée avec succès !'
+            );
 
             return $this->redirectToRoute('app_user_group');
         }

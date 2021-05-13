@@ -1,7 +1,5 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello ChallengeController!{% endblock %}
-
 {% block body %}
     <div class="challenge-show">
 		<div class="col-xs-12 col-md-6 mx-auto challenge-show-div">
@@ -23,7 +21,7 @@
                     <p>Lieu : {{challenge.location}}</p>
 				</div>
 				<div class="challenge-show-btn">
-					<a href="" class="btn-black">Valider</a>
+					<a href="{{ path('app_user_session_challenge_validation', {'slug':challenge.slug} ) }}" class="btn-black">Valider</a>
 				</div>
 			</div>
 		</div>

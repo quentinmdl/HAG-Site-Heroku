@@ -4,19 +4,19 @@
 
 {% block body %}
     <div class="profile-group-create">
-        {% for message in app.flashes('success') %}
-            <div class="alert alert-success">
-                {{ message }}
-            </div>
-        {% endfor %}
         <div class="col-md-6 col-xs-12 mx-auto">
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
             <p><b><a href="{{ path('app_user_group') }}"><i class="fa fa-arrow-left return-arrow"></i></a> Espace Groupe</b></p>
-            <div class="profile-group-create-div">
+                <div class="profile-group-create-div">
                 <h3>Commencez par créer votre groupe</h3>
                 <div class="profile-group-create-form">
                     {{ form_start(create_group_form) }}
                         <div>
-                            {{ form_row(create_group_form, { 'label' : ' '}) }}
+                            {{ form_row(create_group_form.name, { 'label' : ' '}) }}
                         </div>
                         <div class="profile-group-create-btn">
                             <button id="submit" type="submit" class="btn-black">Créer le groupe</button>

@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+	<div class="challenge-validation">
+		{% for message in app.flashes('success') %}
+			<div class="alert alert-success">
+				{{ message }}
+			</div>
+		{% endfor %}
+		<div class="col-md-6 col-xs-12 mx-auto">
+			<p><b> <a href="{{ path('app_user_session_challenge_show', {'slug':challenge.slug} ) }}"><i class="fa fa-arrow-left return-arrow"></i></a>Dépôt de preuvre</b></p>
+			<div class="challenge-validation-div">
+				<h6>Défi : {{challenge.name}}</h6>
+				<div class="challenge-validation-form">
+					{{ form_start(formValidChallenge) }}
+                        <div>
+                            {{ form_row(formValidChallenge, { 'label' : 'Image(s)/Vidéo(s)'}) }}
+                        </div>
+                        <div class="challenge-validation-btn">
+                            <button id="submit" type="submit" class="btn-black">Déposer</button>
+                        </div>
+					{{ form_end(formValidChallenge) }}
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

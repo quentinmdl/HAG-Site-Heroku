@@ -691,6 +691,7 @@ div.main-banner img{
 }
 .profile-user-card-image {
     display: flex;
+    justify-content: space-between;
 }
 
 .profile-content {
@@ -802,8 +803,6 @@ div.main-banner img{
 }
 
 /* SHOW CHALLENGE */
-
-/* END SHOW CHALLENGE */
 .challenge-show {
     padding: 70px 0;
 }
@@ -859,4 +858,32 @@ div.main-banner img{
         padding: 0 0;
     }
 }
+/* END SHOW CHALLENGE */
+
+/* VALID CHALLENGE */
+.challenge-validation {
+    padding: 200px 0;
+}
+.challenge-validation-div{
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    padding: 50px;
+}
+.challenge-validation-div h6{
+    text-align: center;
+    margin-bottom: 30Px;
+}
+.challenge-validation-btn{
+    margin-top: 50px;
+    text-align: center;
+    display: block;
+}
+
+@media screen and (max-width: 840px) {
+    .challenge-validation {
+        padding: 70px 0;
+    }
+    
+}
+/* END VALID CHALLENGE */
+
 /* END SESSION PROFILE */

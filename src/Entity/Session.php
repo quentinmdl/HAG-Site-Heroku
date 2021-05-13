@@ -74,14 +74,14 @@ class Session
     private $state = [];
 
     /**
-     * @ORM\OneToMany(targetEntity=Group::class, mappedBy="session")
-     */
-    private $groups;
-
-    /**
      * @ORM\OneToMany(targetEntity=Challenge::class, mappedBy="session", orphanRemoval=true)
      */
     private $challenges;
+
+    /**
+     * @ORM\OneToMany(targetEntity=Group::class, mappedBy="session", orphanRemoval=true)
+     */
+    private $groups;
 
     /**
      * @ORM\Column(type="datetime")
