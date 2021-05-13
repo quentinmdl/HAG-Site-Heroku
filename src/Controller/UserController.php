@@ -16,32 +16,30 @@ use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 class UserController extends AbstractController
 {
     #[Route('/profil', name: 'app_user_profile')]
-    public function profile(): Response
+    public function profile(User $user = null, Request $request, ObjectManager $manager): Response
     {
-        return $this->render('user/profile.html.twig');
-        // $user = $this->getUser();
-        // $formEditProfileImage =  $this->createForm(ProfileImageType::class, $user);
+        $user = $this->getUser();
+        $formProfileImage =  $this->createForm(ProfileImageType::class, $user);
 
-        // $formEditProfileImage->handleRequest($request);
+        $formProfileImage->handleRequest($request);
 
-        // if ($formEditProfileImage->isSubmitted() && $formEditProfileImage->isValid()) {
-        //     if ($user->getId()) {
-        //         $user->setUpdatedAt(new \DateTime());
-        //     }
-        //     $manager->persist($user);
-        //     $manager->flush();
+        if ($formProfileImage->isSubmitted() && $formProfileImage->isValid()) {
+            if ($user->getId()) {
+                $user->setUpdatedAt(new \DateTime());
+            }
+            $manager->persist($user);
+            $manager->flush();
 
-        //     $this->addFlash(
-        //         'success',
-        //         'Image de profil mise à jour avec succès !'
-        //     );
-
-
-        // }
-        // return $this->render('user/profile.html.twig', [
-        //     'user' => $user,
-        //     'formEditProfileImage' => $formEditProfileImage->createView(),
-        // ]);
+            $this->addFlash(
+                'success',
+                'Image de profil mise à jour avec succès !'
+            );
+            return $this->redirectToRoute('app_user_profile');
+        }
+        return $this->render('user/profile.html.twig', [
+            'user' => $user,
+            'formProfileImage' => $formProfileImage->createView()
+        ]);
     }
 
     #[Route('/profil/modifier', name: 'app_user_update')]
@@ -101,11 +99,4 @@ class UserController extends AbstractController
             'formEditPasswordUser' => $formEditPasswordUser->createView(),
         ]);
     }
-
-   
-    // #[Route('/profil/session-défis', name: 'app_user_session')]
-    // public function sessionProfile(): Response
-    // {
-    //     return $this->render('user/session/profileSession.html.twig');
-    // }
 }

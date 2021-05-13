@@ -1,22 +1,19 @@
 {% extends 'user.html.twig' %}
 
-
-
 {% block body %}
     <div class="profile row justify-content-md-center">
-        {% for message in app.flashes('success') %}
-            <div class="alert alert-success">
-                {{ message }}
-            </div>
-        {% endfor %}
         <div class="col-md-3 col-xs-12 profile-div">
+            {% for message in app.flashes('success') %}
+                <div class="alert alert-success">
+                    {{ message }}
+                </div>
+            {% endfor %}
             <p><b>Profil</b></p>
             <div class="profile-user">
                 <div class="profile-user-card">
-                    <img src=""  width="100" heigth="auto" alt="image de profil">
-                    <h5 class="card-title">Bonjour {{ app.user.firstname }} {{ app.user.lastname }}</h5>
-                    <p class="card-text text-center">Bienvenue sur votre profil</p>
-                    <div style="margin-top : 10%">
+                    <img src="{{ vich_uploader_asset(user, 'profileFile') }}"  width="125" heigth="auto" alt="image de profil">
+                    <h5 class="card-title">{{ app.user.firstname }} {{ app.user.lastname }}</h5>
+                    <div class="profile-user-card-content">
                         Vous êtes un 
                         {% for role in app.user.roles %}
                           
@@ -29,17 +26,17 @@
                             {% endif %}
                         {% endfor %}
                     </div> 
-                    {# {{ form_start(formEditProfileImage) }}
-                        <div>
-                            {{ form_widget(formEditProfileImage.profileImage, { 'label' : 'Image de profil' }) }}
-                        </div>
-                         <div>
-                           <button type="submit" class="btn btn-success">Modifier</button>
-                        </div>
-                    {{ form_end(formEditProfileImage)}} #}
                 </div>
                 <div class="profile-user-card-footer">
                     <p>Inscrit depuis le {{ app.user.createdAt | date('d/m/Y')}} à {{ app.user.createdAt | date('h:m')}}</p>
+                    {{ form_start(formProfileImage) }}
+                        <div class="profile-user-card-image">
+                                <div class="">
+                                    {{- form_widget(formProfileImage.profileFile) -}}
+                                </div>
+                            <button type="submit" class="btn-orange">Modifier</button>
+                        </div>
+                    {{ form_end(formProfileImage) }}
                 </div>
             </div>
         </div>
@@ -63,9 +60,9 @@
                     </div>
                     <div class="row mx-auto">
                         <div>
-                            <p>Mdp : ••••••... <br></p>
+                            <p>Mdp : ••••••...</p>
                         </div>
-                        <div>
+                        <div class="profile-user-informations-btn">
                             <a href="{{ path('app_password_update')}}" class="btn-orange">Modifier</a>
                         </div>
                     </div>

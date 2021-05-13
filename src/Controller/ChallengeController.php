@@ -12,14 +12,6 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ChallengeController extends AbstractController
 {
-    #[Route('/challenge', name: 'challenges')]
-    public function index(): Response
-    {
-        return $this->render('challenge/index.html.twig', [
-            'controller_name' => 'ChallengeController',
-        ]);
-    }
-
     #[Route('/profil/session-défis', name: 'app_user_session_challenges')]
     public function sessionChallengesProfile(ChallengeRepository $repo, Request $request, PaginatorInterface $paginator): Response
     {

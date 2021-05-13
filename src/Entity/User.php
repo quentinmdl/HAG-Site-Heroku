@@ -2,13 +2,15 @@
 
 namespace App\Entity;
 
+use App\Entity\User;
 use Doctrine\ORM\Mapping as ORM;
-use App\Repository\UserRepository;
 
+use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping\JoinColumn;
+use Symfony\Component\Serializer\Serializer;
+
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
-
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -42,18 +44,18 @@ class User implements UserInterface
     private $username;
 
 
-    // /**
-    //  * @ORM\Column(type="string", length=255, nullable=false)
-    //  */
-    // private $file;
+    /**
+    * @ORM\Column(type="string", length=255, nullable=true)
+    */
+    private $file;
 
-    // /**
-    //  *
-    //  * @Vich\UploadableField(mapping="user_images", fileNameProperty="file")
-    //  *
-    //  * @var File
-    //  */
-    // private $profileFile;
+    /**
+     *
+     * @Vich\UploadableField(mapping="user_images", fileNameProperty="file")
+     *
+     * @var File
+     */
+    private $profileFile;
 
 
     /**
@@ -175,34 +177,35 @@ class User implements UserInterface
         return (string) $this->username;
     }
 
-    // public function getFile(): ?string
-    // {
-    //     return $this->file;
-    // }
+    public function getFile(): ?string
+    {
+        return $this->file;
+    }
 
-    // public function setFile(string $file): self
-    // {
-    //     $this->file = $file;
+    public function setFile(?string $file): self
+    {
+        $this->file = $file;
 
-    //     return $this;
-    // }
+        return $this;
+    }
 
-    // public function setProfileFile(?File $file = null): void
-    // {
-    //     $this->profileFile = $file;
+    public function setProfileFile(?File $file = null): void
+    {
+        $this->profileFile = $file;
 
-    //     if ($file) {
-    //         // It is required that at least one field changes if you are using doctrine
-    //         // otherwise the event listeners won't be called and the file is lost
-    //         $this->updatedAt = new \DateTimeImmutable();
-    //     }
-    // }
+        if ($file) {
+            // It is required that at least one field changes if you are using doctrine
+            // otherwise the event listeners won't be called and the file is lost
+            $this->updatedAt = new \DateTimeImmutable();
+        }
+    }
 
-    // public function getProfileFile(): ?File
-    // {
-    //     return $this->profileFile;
-    // }
+    public function getProfileFile(): ?File
+    {
+        return $this->profileFile;
+    }
 
+    
     /**
      * @see UserInterface
      */
@@ -444,5 +447,24 @@ class User implements UserInterface
         $this->username = $username;
 
         return $this;
+    }
+
+
+    public function serialize()
+    {
+        return serialize(array(
+            $this->id,
+            $this->file,
+            $this->profileFile
+        ));
+    }
+
+    public function unserialize($serialized)
+    {
+        list(
+            $this->id,
+            $this->file,
+            $this->profileFile
+        ) = unserialize($serialized);
     }
 }

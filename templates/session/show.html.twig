@@ -1,35 +1,43 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
-    <div class="session-show">
-        <div class="col-md-12 col-lg-9 mx-auto session-show-div">
-            <div class="card session-show-content">
-                <div class="row">
-                    <div class="col-xs-12 col-md-5 mx-auto session-show-img">
-                        <img  src="{{ vich_uploader_asset(session, 'imageFile') }}"  width="250" height="auto" alt="image de la session">
-                    </div>
-                    <div class="col-xs-12 col-md-7 mx-auto session-show-content">
-                        <h4 class="card-title">{{ session.name }}</h4>
-                        <p class="card-text">{{session.description|raw}}</p>
-                        <p>Date de début le {{session.startDate| date('d/m/Y')}} à {{ session.startDate | date('H:i') }}</p>
-                        <p>Prend fin le {{session.endDate| date('d/m/Y')}} à {{ session.endDate | date('H:i') }}</p>
-                    </div>
-                </div>
-            </div>
-            <div class="session-show-btn">
-                {% if app.user %}
-                    <button id="checkout-button-session" class="btn-orange">Participer</button>
-                {% else %}
-                    <p>Veuillez vous connecter afin de pouvoir participer à la session</p>
-                    <a href="{{ path('app_login') }}" class="btn-orange">Connexion</a> 
-                {% endif %}
-            </div>
-        </div>
-    </div>
+	<div class="session-show">
+		<div class="col-md-8 col-xs-12 mx-auto session-show-div">
+			<div class="row">
+				<div class="col-xs-12 col-md-4 mx-auto session-show-img">
+					<img src="{{ vich_uploader_asset(session, 'imageFile') }}" width="250" height="auto" alt="image de la session">
+				</div>
+				<div class="col-xs-12 col-md-8 mx-auto session-show-content">
+					<div class="session-show-title">
+						<h2>{{ session.name }}</h2>
+					</div>
+					<div class="session-show-description">
+						<p>{{session.description|raw}}</p>
+					</div>
+					<div class="session-show-details">
+						<p>Date de début le
+							{{session.startDate| date('d/m/Y')}}
+							à
+							{{ session.startDate | date('H:i') }}</p>
+						<p>Prend fin le
+							{{session.endDate| date('d/m/Y')}}
+							à
+							{{ session.endDate | date('H:i') }}</p>
+					</div>
+					<div class="session-show-btn">
+						{% if app.user %}
+							<button id="checkout-button-session" class="btn-orange">Participer</button>
+						{% else %}
+							<p>Veuillez vous connecter afin de pouvoir participer à la session</p>
+							<a href="{{ path('app_login') }}" class="btn-orange">Connexion</a>
+						{% endif %}
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 {% endblock %}
 
 {% block javascripts %}
     {{ encore_entry_script_tags('session') }}
 {% endblock %}
-
-

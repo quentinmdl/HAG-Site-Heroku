@@ -78,6 +78,17 @@ p.accroche {
 .btn-black:hover {
     color: white;
 }
+
+@media screen and (max-width: 800px) {
+    .btn-orange {
+        padding: 5px 12px;
+        font-size: 14px;
+    }
+    .btn-black {
+        padding: 5px 12px;
+        font-size: 14px;
+    }
+}
 /* END BUTTONS */
 
 /* END GLOBAL */
@@ -89,7 +100,7 @@ p.accroche {
     padding: 0;
 }
 .header-navbar li{
-    padding: 20px 20px;
+    padding: 20px 10px;
 }
 .header-navbar a{
     color: black;
@@ -128,19 +139,20 @@ p.accroche {
     display: none; /* Hidden by default */
     position: fixed; /* Fixed/sticky position */
     bottom: 20px; /* Place the button at the bottom of the page */
-    right: 30px; /* Place the button 30px from the right */
+    right: 20px; /* Place the button 30px from the right */
     z-index: 99; /* Make sure it does not overlap */
     border: none; /* Remove borders */
     outline: none; /* Remove outline */
-    background-color: rgb(56, 56, 56); /* Set a background color */
+    background-color: #e77a34; /* Set a background color */
     color: white; /* Text color */
     cursor: pointer; /* Add a mouse pointer on hover */
-    padding: 5px; /* Some padding */
-    border-radius: 10px; /* Rounded corners */
+    padding: 6px; /* Some padding */
+    border-radius: 25%; /* Rounded corners */
     font-size: 14px; /* Increase font size */
 }
 #btn-top:hover {
-    background-color: rgba(56, 56, 56, 0.485);
+    background-color: white;
+    color: #e77a34;
 }
 /* END FOOTER */
 
@@ -321,14 +333,13 @@ p.accroche {
 /* HOME */
 div.main-banner {
     width: 100%;
-    height: auto;
+    max-height: auto;
 }
 div.main-banner img{
-    width:inherit;
-    height:inherit;
-    background-size: contain;
+    width:100%;
+    height:100%;
+    object-fit: fill;
 }
-
 .home {
     padding: 50px 180px;
     display: flex;
@@ -538,63 +549,66 @@ div.main-banner img{
 
 /* SHOW SESSION */
 .session-show {
-    padding: 165px 0;
+    padding: 200px 0;
 }
 .session-show-div{
     -webkit-box-shadow: 0px 0px 25px 9px rgba(0,0,0,0.39); 
     box-shadow: 0px 0px 25px 9px rgba(0,0,0,0.39);
     width: 100%;
-    padding: 30px 50px;
+    padding: 0;
 }
 .session-show-content {
     text-align: center;
-    border: none;
+    padding: 50px 0px;
+}
+.session-show-content p {
+    text-align: center;
+    word-wrap: break-word;
 }
 .session-show-title {
     width: 100%;
     height: auto;
     margin-bottom: 30px;
-    word-wrap: break-word;
 }  
+.session-show-img{
+    width:100%;
+    padding: 0;
+}
 .session-show-img img{
     width:100%;
-    height:400Px;
-    background-size: contain;
-    margin-bottom: 50px;
-
+    height:100%;
+    object-fit: cover;
 }
-.session-show-img img{
-    max-width:100%;
-    min-height:100%;
-    object-fit: contain;
+.session-show-description  {
     margin-bottom: 50px;
+    padding: 0 70px;
 }
-.session-show-content  {
-    margin-bottom: 50px;
-}
-.session-show-content {
+.session-show-description {
     margin: auto auto;
 }
-.session-show-content  p{
-    text-align: center;
-}
-.session-show-content p{
-    word-wrap: break-word;
-}
-.session-show-details p{
+.session-show-details{
     text-align: center;
     margin-bottom: 50px;
 }
-.session-show-btn {
-    text-align: center;
+
+@media screen and (max-width: 640px) {
+    .session-show {
+        padding: 0 0;
+    }
+    .session-show-img{
+        height: 300px;
+    }
+    .session-show-description  {
+        padding: 0 20px;
+    }
 }
-.session-show-btn p{
-    text-align: center;
-}
+
+
+
 /* END SHOW SESSION */
 
 
-/* SESSION PAYMENT MS*/
+/* SESSION PAYMENT */
 .session-payment {
     padding: 300px 10px;
 }
@@ -617,37 +631,25 @@ div.main-banner img{
 /* END PLAY */
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /* MANAGE ACCOUNT */
 .profile-navbar {
     background-color: blanchedalmond;
     height: 100%;
 }
 .profile-navbar a{
-    padding: 40px 0;
+    padding: 60px;
     color: black;
     justify-content: space-around;
 }
 .profile-navbar-links {
     width: 100%;
-    padding: 0 20px;
+    text-align: center;
 }
-
+.return-arrow {
+    color: black;
+    font-size: 22px;
+    vertical-align: middle;
+}
 @media screen and (max-width: 840px) {
     .profile-navbar a{
         padding: 20px 0;
@@ -663,21 +665,34 @@ div.main-banner img{
     text-align: center;
     padding: 25px;
 }
+.profile-user-card img{
+    border-radius: 25px;
+    margin-bottom: 10px;
+}
 .informations-user {
     border: 1px solid rgba(0, 0, 0, 0.125);
     text-align: center;
     padding: 25px;
 }
-
+.profile-user-informations-btn {
+    margin-left: 20px;
+}
 .profile-user-card-footer {
     text-align: center;
     bottom: 0 !important;
 }
+.profile-user-card-footer form {
+    padding-top: 20Px;
+}
 .profile-user-card-footer p{
     text-align: center;
-    padding: 5px; 
+    padding: 10px; 
     margin: 0;   
 }
+.profile-user-card-image {
+    display: flex;
+}
+
 .profile-content {
     padding: 110px 0;
 }
@@ -776,7 +791,7 @@ div.main-banner img{
     max-height: auto;
     width: 100%;
     max-width: auto;
-    object-fit:contain;
+    object-fit:cover;
 }
 .card-session-challenge-body {
     display: flex;
@@ -784,7 +799,6 @@ div.main-banner img{
     justify-content: center;
     padding: 15px;
     word-break: break-all;
-
 }
 
 /* SHOW CHALLENGE */
@@ -797,7 +811,14 @@ div.main-banner img{
     -webkit-box-shadow: 0px 0px 25px 9px rgba(0,0,0,0.39); 
     box-shadow: 0px 0px 25px 9px rgba(0,0,0,0.39);
     width: 100%;
-    padding: 50px 0;
+    padding-bottom: 50px;
+    padding-left:  0;
+    padding-right: 0;
+}
+.challenge-show-return {
+    padding-left: 10px;
+    padding-bottom: 10px;
+    padding-top: 10px;
 }
 .challenge-show-content {
     text-align: center;
@@ -818,7 +839,7 @@ div.main-banner img{
 .challenge-show-img img{
     width:100%;
     height:100%;
-    object-fit:contain;
+    object-fit:cover;
 }
 .challenge-show-description  {
     margin-bottom: 50px;
@@ -831,6 +852,7 @@ div.main-banner img{
 .challenge-show-details{
     padding: 0 20px;
     text-align: center;
+    margin-bottom: 50px;
 }
 @media screen and (max-width: 840px) {
     .challenge-show {

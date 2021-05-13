@@ -48,8 +48,8 @@
 
 				{% if app.user %}
 					{{ form_start(commentForm) }}
-					{{ form_row(commentForm.content, { 'label' : 'Commentaire:', 'attr': { placeholder: "Votre commentaire" }}) }}
-					<button type="submit" class="btn-black">Commenter</button>
+						{{ form_row(commentForm.content, { 'label' : 'Commentaire:', 'attr': { placeholder: "Votre commentaire" }}) }}
+						<button type="submit" class="btn-black">Commenter</button>
 					{{ form_end(commentForm) }}
 				{% else %}
 					<p>Veuillez vous connecter afin de commenter cette article</p>
