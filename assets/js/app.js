@@ -19,7 +19,7 @@ import  '../images/global/AHAG.webp';
 import  '../images/loginregister/login.webp';
 import  '../images/payment/success.webp';
 import  '../images/payment/error.webp';
-import  '../images/forgotpassword/forgotpassword.webp';
+import  '../images/forgotpassword/forgotPassword.webp';
 
 // Need jQuery? Install it with "yarn add jquery", then uncomment to require it.
 const $ = require('jquery');
