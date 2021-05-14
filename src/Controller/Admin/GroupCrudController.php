@@ -29,7 +29,7 @@ class GroupCrudController extends AbstractCrudController
         return [
             IdField::new('id')->hideOnForm(),
             TextField::new('name')->hideOnForm()->setLabel('Nom'),
-            ChoiceField::new('Statut')
+            ChoiceField::new('state')
                 ->setLabel("Statut")
                 ->setChoices([
                         'Ouvert' => 'ouvert',
@@ -48,6 +48,7 @@ class GroupCrudController extends AbstractCrudController
         return $actions
             // ...
             ->remove(Crud::PAGE_INDEX, Action::NEW)
+            ->remove(Crud::PAGE_INDEX, Action::EDIT)
         ;
     }
 

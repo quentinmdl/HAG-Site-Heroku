@@ -31,6 +31,14 @@
 							<a class="nav-link" href="{{ path('app_user_session_challenges')}}">Ma session</a>
 						</li> 
 					{% endif %}
+					{% if not app.user.groups %}
+
+
+					{% else %}
+						<li class="nav-item">
+							<a class="nav-link" href="{{ path('app_show_group')}}">Mon groupe</a>
+						</li> 
+					{% endif %}
 				</ul>
 				<div>
 					<ul class="navbar-nav mr-auto header-navbar">

@@ -129,7 +129,8 @@ class User implements UserInterface
     private $resetToken;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Group::class, inversedBy="users")
+     * @ORM\ManyToOne(targetEntity=Group::class, inversedBy="groups", cascade="remove")
+     * @ORM\JoinColumn(name="groups_id", referencedColumnName="id", nullable=true, onDelete="SET NULL")
      */
     private $groups;
     

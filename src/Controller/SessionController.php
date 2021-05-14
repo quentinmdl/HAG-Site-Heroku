@@ -46,7 +46,7 @@ class SessionController extends AbstractController
               'price_data' => [
                 'currency' => 'eur',
                 'product_data' => [
-                  'name' => 'Session-actuelle',
+                  'name' => "Session Actuelle",
                 ],
                 'unit_amount' => 4000,
               ],

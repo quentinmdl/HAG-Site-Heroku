@@ -60,13 +60,12 @@ class Group
     private $challenge;
 
     /**
-    * @ORM\OneToMany(targetEntity=User::class, mappedBy="groups", orphanRemoval=true)
-    * @ORM\JoinColumn(nullable=false)
+    * @ORM\OneToMany(targetEntity=User::class, mappedBy="groups")
     */
     private $users;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Session::class, inversedBy="groups")
+     * @ORM\ManyToOne(targetEntity=Session::class, inversedBy="groups",  cascade="persist")
      * @ORM\JoinColumn(nullable=false)
      * @Assert\NotBlank( message ="Vous devez choisir une session");
      */
