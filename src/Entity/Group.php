@@ -73,6 +73,11 @@ class Group
     private $session;
 
     /**
+     * @ORM\Column(type="string", length=10, nullable=true)
+     */
+    private $token;
+
+    /**
      * @ORM\Column(type="datetime")
      */
     private $createdAt;
@@ -88,6 +93,7 @@ class Group
         $this->challenge = new ArrayCollection();
         $this->setCreatedAt(new \DateTime('Europe/Monaco'));
         $this->setState(array('Ouvert'));
+        $this->setToken(base64_encode(random_bytes(10)));
     }
 
     public function getId(): ?int
@@ -218,6 +224,18 @@ class Group
     public function setSession(?Session $session): self
     {
         $this->session = $session;
+
+        return $this;
+    }
+
+    public function getToken(): ?string
+    {
+        return $this->token;
+    }
+
+    public function setToken(string $token): self
+    {
+        $this->token = $token;
 
         return $this;
     }

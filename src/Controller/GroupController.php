@@ -5,7 +5,7 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Entity\Group;
 use App\Form\GroupType;
-use App\Repository\UserRepository;
+use App\Repository\GroupRepository;
 use Doctrine\Persistence\ObjectManager;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -27,14 +27,13 @@ class GroupController extends AbstractController
     {
         $group = new Group();
         $user = $this->getUser();
+
         $createGroupForm = $this->createForm(GroupType::class, $group);
-        // $user = $this->get('security.token_storage')->getToken()->getUser();
-        $groupId = $group->getId();
         $createGroupForm->handleRequest($request);
 
         if ($createGroupForm->isSubmitted() && $createGroupForm->isValid()) {
             $group->setOwner($user->getUsername());
-            $user->setGroups($groupId);
+            $user->setGroups($group);
             $group->setCreatedAt(new \DateTime('Europe/Monaco'));
             $manager->persist($group);
             $manager->flush();
@@ -43,20 +42,25 @@ class GroupController extends AbstractController
                 'success',
                 'Groupe crée avec succès !'
             );
-
-            return $this->redirectToRoute('app_user_group');
+            return $this->redirectToRoute('app_show_group');
         }
+
+        
         return $this->render('user/group/createGroup.html.twig', [
             'create_group_form' => $createGroupForm->createView()
         ]);
     }
 
 
-    #[Route('/profil/groupe/', name: 'app_show_group')]
-    public function show(): Response
+    #[Route('/profil/groupe', name: 'app_show_group')]
+    public function show(User $user, Group $group, GroupRepository $repo): Response
     {
-        return $this->render('user/group/showGroup.html.twig', [
-            'controller_name' => 'GroupController',
+        $groupid = $group->getId();
+        $userGroupList = $repo->SelectUserId($groupid);
+
+        return $this->render('user/group/profileGroup.html.twig', [
+            'group' => $userGroupList,
+            'controller_name' => 'GroupController'
         ]);
     }
 }

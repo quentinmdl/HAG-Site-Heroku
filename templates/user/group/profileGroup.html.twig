@@ -11,12 +11,27 @@
                 </div>
             {% endfor %}
             <p><b>Espace Groupe</b></p>
-            <div class="profile-group-div">
-                <h3>Vous faites désormais partie de la session actuelle, rejoingnez l'aventure !</h3>
-                <div class="profile-group-btn">
-                    <a class="btn-black" href="{{ path('app_create_group') }}">Créer un groupe</a>
+            {% if app.user.groups is null %}    
+                <div class="profile-group-div">
+                    <h3>Vous faites désormais partie de la session actuelle, rejoingnez l'aventure !</h3>
+                    <div class="profile-group-btn">
+                        <a class="btn-black" href="{{ path('app_create_group') }}">Créer un groupe</a>
+                    </div>
                 </div>
-            </div>
+                {% else %}       
+                    <div class="profile-group-div">     
+                        <h3>{{ app.user.groups.name }}</h3>
+                        <p>Score : {{ app.user.groups.score }}</p>
+                        <p>Crée par  : {{ app.user.groups.owner }} le {{ app.user.groups.createdAt|date('d:m:Y') }}</p>
+                        <div>
+                            <p><b>Membre(s)</b></p>
+                            {{ group }}
+                        </div>
+                            <div>
+                            <p><b>Inviter des membres</b></p>
+                        </div>
+                    </div>
+                {% endif %}
         </div>
     </div>
 {% endblock %}

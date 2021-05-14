@@ -19,20 +19,18 @@ class GroupRepository extends ServiceEntityRepository
         parent::__construct($registry, Group::class);
     }
 
-    // /**
-    // * @return Group[] Returns an array of Group objects
-    // */
-    // public function SelectUserId()
-    // {
-    //     return $this->createQueryBuilder('g')
-    //         ->andWhere('g.owner = u.')
-    //         ->setParameter('val', $value)
-    //         ->orderBy('g.id', 'ASC')
-    //         ->setMaxResults(1)
-    //         ->getQuery()
-    //         ->getResult()
-    //     ;
-    // }
+    /**
+    * @return Group[] Returns an array of Group objects
+    */
+    public function SelectUserId($groupid)
+    {
+        $rawSql = "SELECT user.groups_id, user.firstname, user.username FROM `group` as groups INNER JOIN user as user  WHERE $groupid = user.groups_id";
+
+        $stmt = $this->getEntityManager()->getConnection()->prepare($rawSql);
+        $stmt->execute([]);
+    
+        return $stmt->fetchAll();
+    }
 
 
     /*
