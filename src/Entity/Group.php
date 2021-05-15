@@ -67,7 +67,6 @@ class Group
     /**
      * @ORM\ManyToOne(targetEntity=Session::class, inversedBy="groups",  cascade="persist")
      * @ORM\JoinColumn(nullable=false)
-     * @Assert\NotBlank( message ="Vous devez choisir une session");
      */
     private $session;
 

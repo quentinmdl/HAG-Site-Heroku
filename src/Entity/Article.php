@@ -69,8 +69,8 @@ class Article
     private $updatedAt;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="articles")
-     * @ORM\JoinColumn(nullable=false)
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="articles", cascade="remove")
+     * @ORM\JoinColumn(name="category", referencedColumnName="id", nullable=true, onDelete="SET NULL")
      * @Assert\NotBlank( message ="Vous devez choisir une catégorie");
      */
     private $category;

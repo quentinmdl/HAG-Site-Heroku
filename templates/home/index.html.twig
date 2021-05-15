@@ -39,11 +39,11 @@
 							<th>Points</th>
 						</tr>
 					</thead>
-					{% for i in range(0,1) %}
+					{% for group in group %}
 						<tbody>
 							<tr>
-								<td>Groupe</td>
-								<td>28</td>
+								<td>{{ group.name }}</td>
+								<td>{{ group.score }}</td>
 							</tr>
 						</tbody>
 					{% endfor %}

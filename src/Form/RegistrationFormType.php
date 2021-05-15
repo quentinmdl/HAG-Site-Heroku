@@ -18,7 +18,6 @@ use Symfony\Component\Form\Extension\Core\Type\CheckboxType;
 use Symfony\Component\Form\Extension\Core\Type\PasswordType;
 use Symfony\Component\Form\Extension\Core\Type\RepeatedType;
 
-
 class RegistrationFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
@@ -48,12 +47,12 @@ class RegistrationFormType extends AbstractType
             ])
             ->add('gender', ChoiceType::class, array(
                     'choices' => array([
-                        'M.' => 'Homme','Mle' => 'Femme',
+                        'M.' => 'Homme','Mlle' => 'Femme',
                     ]),
                     'label_attr'=>[
                         'class'=>'radio-inline'
                     ],
-                'multiple'=>false,'expanded'=>true,'required' => true, 
+                'multiple'=>false,'expanded'=>true,'required' => true,
  
             ))
             ->add('phone', TelType::class)
