@@ -450,21 +450,21 @@ class User implements UserInterface
     }
 
 
-    public function serialize()
-    {
-        return serialize(array(
-            $this->id,
-            $this->file,
-            $this->profileFile
-        ));
-    }
+    // public function serialize()
+    // {
+    //     return serialize(array(
+    //         $this->id,
+    //         $this->file,
+    //         $this->profileFile
+    //     ));
+    // }
 
-    public function unserialize($serialized)
-    {
-        list(
-            $this->id,
-            $this->file,
-            $this->profileFile
-        ) = unserialize($serialized);
-    }
+    // public function unserialize($serialized)
+    // {
+    //     list(
+    //         $this->id,
+    //         $this->file,
+    //         $this->profileFile
+    //     ) = unserialize($serialized);
+    // }
 }
