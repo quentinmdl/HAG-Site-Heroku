@@ -203,7 +203,7 @@ p.accroche {
         padding: 20px 10px;
     }
     .login-div {
-        width: 100%;
+        width: 100% !important;
     }
 }
 
@@ -240,7 +240,7 @@ p.accroche {
         width: 100%;
     }
     .register-div {
-        width: 100%;
+        width: 100% !important;
         height: 100%;
     }
     .register .form-group  {
