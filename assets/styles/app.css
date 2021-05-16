@@ -194,7 +194,7 @@ p.accroche {
     color: #e77a34;
 }
 
-@media screen and (max-width: 850px) {
+@media screen and (max-width: 600px) {
     .side-img{
         display: none;
     }
@@ -234,7 +234,7 @@ p.accroche {
         width: 50%; 
     }
 } 
-@media screen and (max-width: 800px) {
+@media screen and (max-width: 600px) {
     .side-img{
         display: none;
     }
