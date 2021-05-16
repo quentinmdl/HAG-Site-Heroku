@@ -164,7 +164,7 @@ p.accroche {
     display: inline-flex;
 }
 .side-img{
-    width: 0%;
+    width: 50%;
 }
 .side-img img{
     width: 100%;
@@ -194,16 +194,15 @@ p.accroche {
     color: #e77a34;
 }
 
-@media only screen and (max-width: 800px) {
+@media screen and (max-width: 800px) {
     .side-img{
         display: none;
-        width: 0%;
     }
     .login {
         padding: 20px 10px;
     }
     .login-div {
-        width: 100% !important;
+        width: 100%;
     }
 }
 
@@ -230,17 +229,17 @@ p.accroche {
 .register-form form{
     padding: 20px 10px;
 }
-@media only screen and (max-width: 800px) {
+@media screen and (max-width: 800px) {
     .side-img{
         display: none;
-        width: 0%;
     }
     .register {
         height: 100%;
         width: 100%;
     }
     .register-div {
-        width: 100% !important;
+        width: 100%;
+        display: block;
         height: 100%;
     }
     .register .form-group  {
