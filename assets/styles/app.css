@@ -230,11 +230,6 @@ p.accroche {
 .register-form form{
     padding: 20px 10px;
 }
-@media screen and (max-width: 1200px) {
-    .side-img{
-        width: 50%; 
-    }
-} 
 @media screen and (max-width: 800px) {
     .side-img{
         display: none;
@@ -256,9 +251,6 @@ p.accroche {
     .register-div {
         justify-content:unset;
         align-items: unset;
-    }
-    .side-img{
-        width: 50%; 
     }
 }
 /* END LOGIN & REGISTER */
