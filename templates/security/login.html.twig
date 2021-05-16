@@ -8,10 +8,10 @@
 
 {% block body %}
 	<div class="login">
-		<div class="side-img">
+		<div class="side-img col-xs-12 col-md-6">
 			<img src="{{ asset('build/images/login.webp') }}" width="auto" height="auto" alt="image du site">
 		</div>
-		<div class="login-div">
+		<div class="login-div col-xs-12 col-md-6">
 			<form method="post" class="login-form">
 					{% for message in app.flashes('success') %}
 						<div class="alert alert-success">
