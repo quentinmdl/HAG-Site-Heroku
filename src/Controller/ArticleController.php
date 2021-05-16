@@ -30,6 +30,7 @@ class ArticleController extends AbstractController
         if ($searchArticleForm->handleRequest($request)->isSubmitted() && $searchArticleForm->isValid()) {
             $searchData = $searchArticleForm->getData();
             $articles = $repo->findByCategory($searchData);
+            return $this->redirectToRoute('articles', ['page' => 1]);
         } else {
             $articles = $repo->findBy([], ['createdAt' => 'desc']);
         }

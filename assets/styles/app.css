@@ -196,8 +196,8 @@ p.accroche {
 
 @media screen and (max-width: 500px) {
     .side-img{
-        display: none;
-        width: 0%;
+        display: none !important;
+        width: 0% !important;
     }
     .login {
         padding: 20px 10px;
@@ -237,8 +237,8 @@ p.accroche {
 } 
 @media screen and (max-width: 500px) {
     .side-img{
-        display: none;
-        width: 0%;
+        display: none !important;
+        width: 0% !important;
     }
     .register {
         height: 100%;
