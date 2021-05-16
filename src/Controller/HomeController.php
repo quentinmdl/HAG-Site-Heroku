@@ -10,7 +10,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class HomeController extends AbstractController
 {
-    #[Route('/', name: 'main')]
+    #[Route('/', name: 'home')]
     public function index(GroupRepository $repo): Response
     {
         $group = $repo->findBy([], ['score' => 'desc']);
