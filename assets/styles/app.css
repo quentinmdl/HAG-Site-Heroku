@@ -194,7 +194,7 @@ p.accroche {
     color: #e77a34;
 }
 
-@media screen and (max-width: 800px) {
+@media only screen and (max-width: 800px) {
     .side-img{
         display: none;
         width: 0%;
@@ -230,7 +230,7 @@ p.accroche {
 .register-form form{
     padding: 20px 10px;
 }
-@media screen and (max-width: 800px) {
+@media only screen and (max-width: 800px) {
     .side-img{
         display: none;
         width: 0%;
