@@ -194,10 +194,10 @@ p.accroche {
     color: #e77a34;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 800px) {
     .side-img{
-        display: none !important;
-        width: 0% !important;
+        display: none;
+        width: 0%;
     }
     .login {
         padding: 20px 10px;
@@ -235,10 +235,10 @@ p.accroche {
         width: 50%; 
     }
 } 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 800px) {
     .side-img{
-        display: none !important;
-        width: 0% !important;
+        display: none;
+        width: 0%;
     }
     .register {
         height: 100%;

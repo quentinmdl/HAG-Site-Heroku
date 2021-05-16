@@ -4,13 +4,14 @@
         <meta charset="UTF-8">
         <title>At Home A Game</title>
         <base href="/">
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        {# <meta name="viewport" content="width=device-width, initial-scale=1" /> #}
+        <meta name="viewport" content="width=device-width, initial-scale=0.41, maximum-scale=1" />
         <meta name="description" content="Projet UF, At Home A Game, réalisé en B2 informatique avec le framework Symfony" />
         <meta name="author" content="Etudiants">
         <meta name="Keywords" content="etudiant, projet uf, On The Road A Game, Referencement web, Ynov , Developpeur web, Ynov, Aix en provence, Développeur WEB, Mobile, Android, IOS,  défis, voyage, Symfony, Material Design" />
         <meta name="Robots" content="all">  
-        {# <link rel="icon" href="{{ asset('build/images/favicon.ico') }}" /> #}
-
+        <link rel="icon" href="{{ asset('build/images/favicon.ico') }}" />
+        <link rel="apple-touch-icon" sizes="150x150" href="{{ asset('build/images/ahag.webp') }}" />
             
         <script src="https://js.stripe.com/v3/"></script>
         {% block stylesheets %}
