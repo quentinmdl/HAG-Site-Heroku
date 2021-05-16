@@ -2,13 +2,13 @@
 
 namespace App\Entity;
 
+use Serializable;
 use App\Entity\User;
-
 use Doctrine\ORM\Mapping as ORM;
-use App\Repository\UserRepository;
-use Doctrine\ORM\Mapping\JoinColumn;
 
-use Symfony\Component\Serializer\Serializer;
+use App\Repository\UserRepository;
+
+use Doctrine\ORM\Mapping\JoinColumn;
 use Symfony\Component\HttpFoundation\File\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -22,7 +22,7 @@ use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
  * @Vich\Uploadable
  */
  
-class User implements UserInterface
+class User implements UserInterface, \Serializable
 {
     /**
      * @ORM\Id
@@ -52,7 +52,7 @@ class User implements UserInterface
     /**
      *
      * @Vich\UploadableField(mapping="user_images", fileNameProperty="file")
-     *
+     * @Assert\Expression("this.getFile() or this.getProfileFile()", message="Une erreur est survenue")
      * @var File
      */
     private $profileFile;
@@ -192,12 +192,6 @@ class User implements UserInterface
     public function setProfileFile(?File $file = null): void
     {
         $this->profileFile = $file;
-
-        if ($file) {
-            // It is required that at least one field changes if you are using doctrine
-            // otherwise the event listeners won't be called and the file is lost
-            $this->updatedAt = new \DateTimeImmutable();
-        }
     }
 
     public function getProfileFile(): ?File
@@ -450,21 +444,25 @@ class User implements UserInterface
     }
 
 
-    // public function serialize()
-    // {
-    //     return serialize(array(
-    //         $this->id,
-    //         $this->file,
-    //         $this->profileFile
-    //     ));
-    // }
-
-    // public function unserialize($serialized)
-    // {
-    //     list(
-    //         $this->id,
-    //         $this->file,
-    //         $this->profileFile
-    //     ) = unserialize($serialized);
-    // }
+    public function serialize()
+    {
+        return serialize(array(
+             $this->id,
+             $this->roles,
+             $this->username,
+             $this->file,
+             $this->profileFile,
+         ));
+    }
+ 
+    public function unserialize($serialized)
+    {
+        list(
+            $this->id,
+            $this->roles,
+            $this->username,
+            $this->file,
+            $this->profileFile,
+         ) = unserialize($serialized);
+    }
 }
