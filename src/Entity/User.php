@@ -2,7 +2,6 @@
 
 namespace App\Entity;
 
-use Serializable;
 use App\Entity\User;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -447,22 +446,22 @@ class User implements UserInterface, \Serializable
     public function serialize()
     {
         return serialize(array(
-             $this->id,
-             $this->roles,
-             $this->username,
-             $this->file,
-             $this->profileFile,
-         ));
+            $this->id,
+            $this->username,
+            $this->password,
+            // see section on salt below
+            // $this->salt,
+        ));
     }
- 
+
     public function unserialize($serialized)
     {
         list(
             $this->id,
-            $this->roles,
             $this->username,
-            $this->file,
-            $this->profileFile,
-         ) = unserialize($serialized);
+            $this->password,
+            // see section on salt below
+            // $this->salt
+        ) = unserialize($serialized);
     }
 }

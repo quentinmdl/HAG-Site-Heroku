@@ -44,7 +44,8 @@
 							</li>
 						{% else %}
 							<li class="nav-item dropdown">
-								<a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Bonjour,
+								<a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+									<img src="{{ vich_uploader_asset(app.user, 'profileFile') }}"  width="40" heigth="auto" alt="image de profil">
 									{{ app.user.username() }}
 								</a>
 								<div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">

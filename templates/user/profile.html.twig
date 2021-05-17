@@ -3,11 +3,6 @@
 {% block body %}
     <div class="profile row justify-content-md-center">
         <div class="col-md-3 col-xs-12 profile-div">
-            {% for message in app.flashes('success') %}
-                <div class="alert alert-success">
-                    {{ message }}
-                </div>
-            {% endfor %}
             <p><b>Profil</b></p>
             <div class="profile-user">
                 <div class="profile-user-card">
@@ -36,6 +31,11 @@
                                 </div>
                             <button type="submit" class="btn-orange">Modifier</button>
                         </div>
+                        {% for message in app.flashes('success') %}
+                            <div class="alert alert-success">
+                                {{ message }}
+                            </div>
+                        {% endfor %}
                     {{ form_end(formProfileImage) }}
                 </div>
             </div>

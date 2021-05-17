@@ -16,7 +16,7 @@
         "dev": "encore dev",
         "watch": "encore dev --watch",
         "build": "encore production --progress",
-        "heroku-postbuild" : "node_modules/.bin/encore production"
+        "heroku-postbuild": "node_modules/.bin/encore production"
     },
     "dependencies": {
         "bootstrap": "^4.6.0",
@@ -24,9 +24,8 @@
         "stripe": "^8.144.0",
         "yarn": "^1.22.10"
     },
-
     "engines": {
         "node": "^14.16.1",
         "npm": "^7.11.1"
-      }
+    }
 }

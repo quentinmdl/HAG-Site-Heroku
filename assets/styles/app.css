@@ -91,6 +91,26 @@ p.accroche {
 }
 /* END BUTTONS */
 
+/* ERROR PAGES */
+.error-page-div {
+    height: 70vh;
+    align-items: center;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+}
+.error-page-content {
+    align-items: center;
+}
+.error-page-div p{
+    text-align: center;
+}
+.error-page-div h1{
+    font-weight: 100;
+    font-size: 150px;
+}
+/* END ERROR PAGES */
+
 /* END GLOBAL */
 
 /* NAVBAR */
@@ -112,12 +132,16 @@ p.accroche {
 .dropdown-toggle {
     cursor: pointer;
 }
+.dropdown-toggle img{
+    border-radius: 25px;
+}
 .dropdown-menu a:hover {
     background-color: #e77a34;
 }
 .dropdown-item:active {
     background-color: #e77a34;
 }
+
 
 @media screen and (max-width: 450px) {
     .navbar {
