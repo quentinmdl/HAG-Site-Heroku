@@ -196,7 +196,7 @@ class User implements UserInterface, \Serializable
         }
     }
 
-    public function getProfileFile(): ?File|null
+    public function getProfileFile(): ?File
     {
         return $this->profileFile;
     }
