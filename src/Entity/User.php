@@ -44,7 +44,7 @@ class User implements UserInterface, \Serializable
 
 
     /**
-    * @ORM\Column(type="string", length=255)
+    * @ORM\Column(type="string", length=255, nullable=true)
     */
     private $file;
 
