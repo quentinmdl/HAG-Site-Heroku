@@ -398,6 +398,9 @@ div.main-banner img{
     margin-bottom: 50px;
     display: flex;
 }
+.search-filter button {
+    margin-left: 10px;
+}
 .form-filter {
     padding: 0;
     margin: 0;
