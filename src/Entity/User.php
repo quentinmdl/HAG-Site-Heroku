@@ -51,7 +51,7 @@ class User implements UserInterface, \Serializable
 
     /**
      *
-     * @Vich\UploadableField(mapping="user_images", fileNameProperty="file",  nullable=true)
+     * @Vich\UploadableField(mapping="user_images", fileNameProperty="file")
      * @Assert\Expression("this.getFile() or this.getProfileFile()", message="Une erreur est survenue")
      * @var File|null
      */
