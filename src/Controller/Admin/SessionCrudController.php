@@ -30,22 +30,22 @@ class SessionCrudController extends AbstractCrudController
         return [
             IdField::new('id')->hideOnForm(),
             TextField::new('name')->setLabel('Nom'),
-            // ChoiceField::new('state')
-            //     ->setLabel("Statut")
-            //     ->setChoices([
-            //             'Ouvert' => 'ouvert',
-            //             'Complet' => 'complet',
-            //             'Finie' => 'finie',
-            //             ])
-            //     ->allowMultipleChoices(true),
-            // TextareaField::new('description')->setLabel('Description'),
-            // TextField::new('imageFile')->setFormType(VichImageType::class)->onlyWhenCreating()->setLabel('Image/Vidéo'),
-            // ImageField::new('file')->setBasePath('/uploads/sessions/')->onlyOnIndex()->setLabel('Image'),
+            ChoiceField::new('state')
+                ->setLabel("Statut")
+                ->setChoices([
+                        'Ouvert' => 'ouvert',
+                        'Complet' => 'complet',
+                        'Finie' => 'finie',
+                        ])
+                ->allowMultipleChoices(true),
+            TextareaField::new('description')->setLabel('Description'),
+            TextField::new('imageFile')->setFormType(VichImageType::class)->onlyWhenCreating()->setLabel('Image/Vidéo'),
+            ImageField::new('file')->setBasePath('/uploads/sessions/')->onlyOnIndex()->setLabel('Image'),
             // DateTimeField::new('startDate')->setFormat('dd-MM-YY HH:mm')->renderAsChoice()->setLabel('Date de début'),
             // DateTimeField::new('endDate')->setFormat('dd-MM-YY HH:mm')->renderAsChoice()->setLabel('Date de fin'),
             // SlugField::new('slug')->setTargetFieldName('name')->hideOnForm()->hideOnIndex(),
             // DateTimeField::new('createdAt')->hideOnForm()->setLabel('Créée à'),
-            // DateTimeField::new('updatedAt')->hideOnForm()->setLabel('Modifiée à')
+            DateTimeField::new('updatedAt')->hideOnForm()->setLabel('Modifiée à'),
         ];
     }
 
