@@ -188,10 +188,10 @@ class User implements UserInterface, \Serializable
         return $this;
     }
 
-    public function setProfileFile(?File|null $file = null): void
+    public function setProfileFile(?File $file = null): void
     {
         $this->profileFile = $file;
-        if ($file instanceof File|null) {
+        if ($file instanceof File) {
             $this->updatedAt = new \DateTime();
         }
     }
