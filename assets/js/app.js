@@ -14,6 +14,7 @@ import 'bootstrap';
 import 'font-awesome/css/font-awesome.css';
 
 import  '../images/global/favicon.ico';
+import  '../images/user/default.png';
 import  '../images/global/AHAG-icon.png';
 import  '../images/global/AHAG-Banner.webp';
 import  '../images/global/AHAG.webp';

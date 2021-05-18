@@ -13,7 +13,7 @@ class ProfileImageType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder->add('profileFile', VichImageType::class, [
-            'required' => false,
+            'required' => true,
             'allow_delete' => false,
             'delete_label' => "supprimer ma photo",
             'download_label' => false,
