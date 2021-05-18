@@ -29,25 +29,22 @@ class RegistrationController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            if ($user->getFile() === null && $user->getProfileFile() === null) {
+            if ($user->getFile() === null | $user->getProfileFile() === null) {
                 $user->setPassword(
                     $passwordEncoder->encodePassword(
                         $user,
                         $form->get('password')->getData()
                     )
                 );
-    
-                $user->setFile("ee");
-                $user->setProfileFile("ee");
+
                 $user->setRoles(array('ROLE_USER'));
                 $user->setCreatedAt(new \DateTime());
-    
-               
+        
+                
                 $entityManager = $this->getDoctrine()->getManager();
                 $entityManager->persist($user);
                 $entityManager->flush();
-    
-            
+     
                 return $guardHandler->authenticateUserAndHandleSuccess(
                     $user,
                     $request,

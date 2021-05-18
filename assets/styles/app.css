@@ -285,7 +285,7 @@ p.accroche {
 
 /* FORGOT PASSWORD*/
 .forgot-password {
-    min-height: 67.5vh;
+    min-height: 70vh;
     display: flex;
     align-items: center;
     justify-content: center;
