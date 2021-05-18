@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
 
 use Doctrine\ORM\Mapping\JoinColumn;
-use Symfony\Component\HttpFoundation\File|null\File|null;
+use Symfony\Component\HttpFoundation\File;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -44,8 +44,7 @@ class User implements UserInterface, \Serializable
 
 
     /**
-    * @ORM\Column(type="string", length=255, nullable=true)
-    * @var String|null
+    * @ORM\Column(type="string", length=255)
     */
     private $file;
 
@@ -53,7 +52,6 @@ class User implements UserInterface, \Serializable
      *
      * @Vich\UploadableField(mapping="user_images", fileNameProperty="file")
      * @Assert\Expression("this.getFile() or this.getProfileFile()", message="Une erreur est survenue")
-     * @var File|null
      */
     private $profileFile;
 

@@ -37,8 +37,8 @@ class RegistrationController extends AbstractController
                     )
                 );
     
-                // $user->setFile("ee");
-                // $user->setProfileFile("ee");
+                $user->setFile("ee");
+                $user->setProfileFile("ee");
                 $user->setRoles(array('ROLE_USER'));
                 $user->setCreatedAt(new \DateTime());
     
