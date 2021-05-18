@@ -44,7 +44,7 @@ class User implements UserInterface, \Serializable
 
 
     /**
-    * @ORM\Column(type="string", length=255, nullable=true)
+    * @ORM\Column(type="string", length=255)
     */
     private $file;
 
@@ -52,7 +52,7 @@ class User implements UserInterface, \Serializable
      *
      * @Vich\UploadableField(mapping="user_images", fileNameProperty="file")
      * @Assert\Expression("this.getFile() or this.getProfileFile()", message="Une erreur est survenue")
-     * @var File|null
+     * @var File
      */
     private $profileFile;
 
