@@ -38,7 +38,7 @@ class User implements UserInterface, \Serializable
 
     /**
      * @ORM\Column(type="string", length=255, unique=true)
-     * @Assert\Length(min="3", minMessage="Votre PSEUDO doit faire minimum 3 caractères")
+     * @Assert\Length(min="3", minMessage="Votre pseudo doit faire minimum 3 caractères")
      */
     private $username;
 
@@ -52,7 +52,7 @@ class User implements UserInterface, \Serializable
      *
      * @Vich\UploadableField(mapping="user_images", fileNameProperty="file")
      * @Assert\Expression("this.getFile() or this.getProfileFile()", message="Une erreur est survenue")
-     * @var File
+     * @var File|null
      */
     private $profileFile;
 
