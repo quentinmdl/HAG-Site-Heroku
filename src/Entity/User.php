@@ -8,7 +8,7 @@ use Doctrine\ORM\Mapping as ORM;
 use App\Repository\UserRepository;
 
 use Doctrine\ORM\Mapping\JoinColumn;
-use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\HttpFoundation\File|null\File|null;
 use Vich\UploaderBundle\Mapping\Annotation as Vich;
 use Symfony\Component\Validator\Constraints as Assert;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -45,16 +45,17 @@ class User implements UserInterface, \Serializable
 
     /**
     * @ORM\Column(type="string", length=255, nullable=true)
+    * @var String|null
     */
     private $file;
 
-    // /**
-    //  *
-    //  * @Vich\UploadableField(mapping="user_images", fileNameProperty="file",  nullable=true)
-    //  * @Assert\Expression("this.getFile() or this.getProfileFile()", message="Une erreur est survenue")
-    //  * @var File
-    //  */
-    // private $profileFile;
+    /**
+     *
+     * @Vich\UploadableField(mapping="user_images", fileNameProperty="file",  nullable=true)
+     * @Assert\Expression("this.getFile() or this.getProfileFile()", message="Une erreur est survenue")
+     * @var File|null
+     */
+    private $profileFile;
 
 
     /**
@@ -187,15 +188,15 @@ class User implements UserInterface, \Serializable
         return $this;
     }
 
-    public function setProfileFile(File $file = null): void
+    public function setProfileFile(?File|null $file = null): void
     {
         $this->profileFile = $file;
-        if ($file instanceof File) {
+        if ($file instanceof File|null) {
             $this->updatedAt = new \DateTime();
         }
     }
 
-    public function getProfileFile(): ?File
+    public function getProfileFile(): ?File|null
     {
         return $this->profileFile;
     }
