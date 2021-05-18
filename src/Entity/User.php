@@ -48,13 +48,13 @@ class User implements UserInterface, \Serializable
     */
     private $file;
 
-    /**
-     *
-     * @Vich\UploadableField(mapping="user_images", fileNameProperty="file")
-     * @Assert\Expression("this.getFile() or this.getProfileFile()", message="Une erreur est survenue")
-     * @var File
-     */
-    private $profileFile;
+    // /**
+    //  *
+    //  * @Vich\UploadableField(mapping="user_images", fileNameProperty="file")
+    //  * @Assert\Expression("this.getFile() or this.getProfileFile()", message="Une erreur est survenue")
+    //  * @var File
+    //  */
+    // private $profileFile;
 
 
     /**
