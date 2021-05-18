@@ -1,6 +1,4 @@
 <h1>Bonjour!</h1>
-<img  style="display: block;" src="{{ asset('build/images/forgotPassword.webp') }}" width="125" height="auto" class="d-inline-block align-top" alt="image mot de passe oublié">
-<img  style="display: block;" src="{{ asset('build/images/AHAG.webp') }}" width="125" height="auto" class="d-inline-block align-top" alt="image mot de passe oublié">
 <p>Pour reinitialiser votre mot de passe, veuillez cliquer sur le lien suivant :</p>
 
 <a href="{{ url('app_reset_password', {token: resetToken.token}) }}">{{ url('app_reset_password', {token: resetToken.token}) }}</a>
