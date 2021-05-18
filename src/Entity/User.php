@@ -148,7 +148,6 @@ class User implements UserInterface, \Serializable
     */
     private $updatedAt;
 
-
     public function getId(): ?int
     {
         return $this->id;
