@@ -50,7 +50,7 @@ class User implements UserInterface, \Serializable
 
     // /**
     //  *
-    //  * @Vich\UploadableField(mapping="user_images", fileNameProperty="file")
+    //  * @Vich\UploadableField(mapping="user_images", fileNameProperty="file",  nullable=true)
     //  * @Assert\Expression("this.getFile() or this.getProfileFile()", message="Une erreur est survenue")
     //  * @var File
     //  */
@@ -187,7 +187,7 @@ class User implements UserInterface, \Serializable
         return $this;
     }
 
-    public function setProfileFile(?File $file = null): void
+    public function setProfileFile(File $file = null): void
     {
         $this->profileFile = $file;
         if ($file instanceof File) {
