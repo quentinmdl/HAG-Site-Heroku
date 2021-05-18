@@ -32,7 +32,7 @@ class User implements UserInterface, \Serializable
 
     /**
      * @ORM\Column(type="string", length=180, unique=true)
-     * @Assert\Email(message = "L'addresse email n'est pas valide")
+     * @Assert\Email(message = "L'adresse email n'est pas valide")
      */
     private $email;
 
